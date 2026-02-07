@@ -1,0 +1,14 @@
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.GeneratedMSBuildEditorConfig.editorconfig
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.AssemblyInfoInputs.cache
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.AssemblyInfo.cs
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.csproj.CoreCompileInputs.cache
+D:\VisorHR-SaaS\bin\Debug\net8.0\VisorHR.Runner.exe
+D:\VisorHR-SaaS\bin\Debug\net8.0\VisorHR.Runner.deps.json
+D:\VisorHR-SaaS\bin\Debug\net8.0\VisorHR.Runner.runtimeconfig.json
+D:\VisorHR-SaaS\bin\Debug\net8.0\VisorHR.Runner.dll
+D:\VisorHR-SaaS\bin\Debug\net8.0\VisorHR.Runner.pdb
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.dll
+D:\VisorHR-SaaS\obj\Debug\net8.0\refint\VisorHR.Runner.dll
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.pdb
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.genruntimeconfig.cache
+D:\VisorHR-SaaS\obj\Debug\net8.0\ref\VisorHR.Runner.dll

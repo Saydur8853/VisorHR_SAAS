@@ -1,0 +1,846 @@
+{
+  "Version": 1,
+  "Hash": "nYaPS2xIx4gnja9LFq0B1gGgZGcpkd/s9Gwjg9yPZTA=",
+  "Source": "VisorHR.Api",
+  "BasePath": "_content/VisorHR.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "VisorHR.Api\\wwwroot",
+      "Source": "VisorHR.Api",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\app.js",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "app#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "pvig6ja1u0",
+      "Integrity": "a2pdsPLxXeq4FDUAWO74ZcvbsBJh8wpIi/fDxYE2cdM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\app.js"
+    },
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\fonts\\SutonnyMJ.ttf",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "fonts/SutonnyMJ#[.{fingerprint}]?.ttf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hx2w7485y9",
+      "Integrity": "1Y2aRTEURzAUJmScZB/hSAEBY1lK5XpAlKwIayHVK9w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\fonts\\SutonnyMJ.ttf"
+    },
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\index.html",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "28azi9rf53",
+      "Integrity": "fluMFcfkfdnTvbwXc+/0oZiBHg1zAVlUA8Ha6VTeQIo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\styles.css",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "styles#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "23zkc2e52s",
+      "Integrity": "nuJjLFjydrBpJzSaJ2PS3DTE+hR7IroyX6ayEXRH2fs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\styles.css"
+    },
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\vendor\\unicode2ascii.umd.js",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "vendor/unicode2ascii.umd#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qmtckux0np",
+      "Integrity": "Av20CqL5q2JxJV9ODp478kBVSFHROIC7BZw9uHPqfkM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vendor\\unicode2ascii.umd.js"
+    },
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\visorhr_logo.svg",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "visorhr_logo#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "watkazitsm",
+      "Integrity": "WOfDeHO8KBA+9d1NdSyRVaAGDgyhGLV0c1voCinG1Lo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\visorhr_logo.svg"
+    },
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.html",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "welcome#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dl1c0m3686",
+      "Integrity": "EVslsdDWnXkLC7Z2639c9xOu1oNw8pKOJ8UVLp+x1DI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\welcome.html"
+    },
+    {
+      "Identity": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.js",
+      "SourceId": "VisorHR.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\",
+      "BasePath": "_content/VisorHR.Api",
+      "RelativePath": "welcome#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e58hk1myad",
+      "Integrity": "fqQK1ig1nZ6OoSxSTbLTOLh6BeMrhrq6rBx7oLmvHU4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\welcome.js"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "app.js",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\app.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7798"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"a2pdsPLxXeq4FDUAWO74ZcvbsBJh8wpIi/fDxYE2cdM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 09:42:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-a2pdsPLxXeq4FDUAWO74ZcvbsBJh8wpIi/fDxYE2cdM="
+        }
+      ]
+    },
+    {
+      "Route": "app.pvig6ja1u0.js",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\app.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7798"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"a2pdsPLxXeq4FDUAWO74ZcvbsBJh8wpIi/fDxYE2cdM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 09:42:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pvig6ja1u0"
+        },
+        {
+          "Name": "label",
+          "Value": "app.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-a2pdsPLxXeq4FDUAWO74ZcvbsBJh8wpIi/fDxYE2cdM="
+        }
+      ]
+    },
+    {
+      "Route": "fonts/SutonnyMJ.hx2w7485y9.ttf",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\fonts\\SutonnyMJ.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73656"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1Y2aRTEURzAUJmScZB/hSAEBY1lK5XpAlKwIayHVK9w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 Feb 2007 05:49:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hx2w7485y9"
+        },
+        {
+          "Name": "label",
+          "Value": "fonts/SutonnyMJ.ttf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1Y2aRTEURzAUJmScZB/hSAEBY1lK5XpAlKwIayHVK9w="
+        }
+      ]
+    },
+    {
+      "Route": "fonts/SutonnyMJ.ttf",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\fonts\\SutonnyMJ.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73656"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1Y2aRTEURzAUJmScZB/hSAEBY1lK5XpAlKwIayHVK9w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 Feb 2007 05:49:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1Y2aRTEURzAUJmScZB/hSAEBY1lK5XpAlKwIayHVK9w="
+        }
+      ]
+    },
+    {
+      "Route": "index.28azi9rf53.html",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5737"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fluMFcfkfdnTvbwXc+/0oZiBHg1zAVlUA8Ha6VTeQIo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 09:52:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "28azi9rf53"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fluMFcfkfdnTvbwXc+/0oZiBHg1zAVlUA8Ha6VTeQIo="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5737"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fluMFcfkfdnTvbwXc+/0oZiBHg1zAVlUA8Ha6VTeQIo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 09:52:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fluMFcfkfdnTvbwXc+/0oZiBHg1zAVlUA8Ha6VTeQIo="
+        }
+      ]
+    },
+    {
+      "Route": "styles.23zkc2e52s.css",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nuJjLFjydrBpJzSaJ2PS3DTE+hR7IroyX6ayEXRH2fs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 11:59:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "23zkc2e52s"
+        },
+        {
+          "Name": "label",
+          "Value": "styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nuJjLFjydrBpJzSaJ2PS3DTE+hR7IroyX6ayEXRH2fs="
+        }
+      ]
+    },
+    {
+      "Route": "styles.css",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nuJjLFjydrBpJzSaJ2PS3DTE+hR7IroyX6ayEXRH2fs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 11:59:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nuJjLFjydrBpJzSaJ2PS3DTE+hR7IroyX6ayEXRH2fs="
+        }
+      ]
+    },
+    {
+      "Route": "vendor/unicode2ascii.umd.js",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\vendor\\unicode2ascii.umd.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Av20CqL5q2JxJV9ODp478kBVSFHROIC7BZw9uHPqfkM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Oct 1985 08:15:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Av20CqL5q2JxJV9ODp478kBVSFHROIC7BZw9uHPqfkM="
+        }
+      ]
+    },
+    {
+      "Route": "vendor/unicode2ascii.umd.qmtckux0np.js",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\vendor\\unicode2ascii.umd.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Av20CqL5q2JxJV9ODp478kBVSFHROIC7BZw9uHPqfkM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Oct 1985 08:15:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qmtckux0np"
+        },
+        {
+          "Name": "label",
+          "Value": "vendor/unicode2ascii.umd.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Av20CqL5q2JxJV9ODp478kBVSFHROIC7BZw9uHPqfkM="
+        }
+      ]
+    },
+    {
+      "Route": "visorhr_logo.svg",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\visorhr_logo.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "947"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WOfDeHO8KBA+9d1NdSyRVaAGDgyhGLV0c1voCinG1Lo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 Jan 2026 07:32:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WOfDeHO8KBA+9d1NdSyRVaAGDgyhGLV0c1voCinG1Lo="
+        }
+      ]
+    },
+    {
+      "Route": "visorhr_logo.watkazitsm.svg",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\visorhr_logo.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "947"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WOfDeHO8KBA+9d1NdSyRVaAGDgyhGLV0c1voCinG1Lo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 Jan 2026 07:32:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "watkazitsm"
+        },
+        {
+          "Name": "label",
+          "Value": "visorhr_logo.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WOfDeHO8KBA+9d1NdSyRVaAGDgyhGLV0c1voCinG1Lo="
+        }
+      ]
+    },
+    {
+      "Route": "welcome.dl1c0m3686.html",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "74194"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EVslsdDWnXkLC7Z2639c9xOu1oNw8pKOJ8UVLp+x1DI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 11:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dl1c0m3686"
+        },
+        {
+          "Name": "label",
+          "Value": "welcome.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EVslsdDWnXkLC7Z2639c9xOu1oNw8pKOJ8UVLp+x1DI="
+        }
+      ]
+    },
+    {
+      "Route": "welcome.e58hk1myad.js",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "108891"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fqQK1ig1nZ6OoSxSTbLTOLh6BeMrhrq6rBx7oLmvHU4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 11:52:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e58hk1myad"
+        },
+        {
+          "Name": "label",
+          "Value": "welcome.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fqQK1ig1nZ6OoSxSTbLTOLh6BeMrhrq6rBx7oLmvHU4="
+        }
+      ]
+    },
+    {
+      "Route": "welcome.html",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "74194"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EVslsdDWnXkLC7Z2639c9xOu1oNw8pKOJ8UVLp+x1DI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 11:56:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EVslsdDWnXkLC7Z2639c9xOu1oNw8pKOJ8UVLp+x1DI="
+        }
+      ]
+    },
+    {
+      "Route": "welcome.js",
+      "AssetFile": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "108891"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fqQK1ig1nZ6OoSxSTbLTOLh6BeMrhrq6rBx7oLmvHU4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Feb 2026 11:52:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fqQK1ig1nZ6OoSxSTbLTOLh6BeMrhrq6rBx7oLmvHU4="
+        }
+      ]
+    }
+  ]
+}

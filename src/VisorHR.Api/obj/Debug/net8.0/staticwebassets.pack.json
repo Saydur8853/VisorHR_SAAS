@@ -1,0 +1,57 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\app.js",
+      "PackagePath": "staticwebassets\\app.js"
+    },
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\fonts\\SutonnyMJ.ttf",
+      "PackagePath": "staticwebassets\\fonts\\SutonnyMJ.ttf"
+    },
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\styles.css",
+      "PackagePath": "staticwebassets\\styles.css"
+    },
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\vendor\\unicode2ascii.umd.js",
+      "PackagePath": "staticwebassets\\vendor\\unicode2ascii.umd.js"
+    },
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\visorhr_logo.svg",
+      "PackagePath": "staticwebassets\\visorhr_logo.svg"
+    },
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.html",
+      "PackagePath": "staticwebassets\\welcome.html"
+    },
+    {
+      "Id": "D:\\VisorHR-SaaS\\src\\VisorHR.Api\\wwwroot\\welcome.js",
+      "PackagePath": "staticwebassets\\welcome.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VisorHR.Api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VisorHR.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.VisorHR.Api.props",
+      "PackagePath": "build\\VisorHR.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.VisorHR.Api.props",
+      "PackagePath": "buildMultiTargeting\\VisorHR.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.VisorHR.Api.props",
+      "PackagePath": "buildTransitive\\VisorHR.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

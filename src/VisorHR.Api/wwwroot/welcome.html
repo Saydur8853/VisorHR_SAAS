@@ -1,0 +1,1401 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisorHR Welcome</title>
+  <link rel="icon" href="visorhr_logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="welcome">
+  <div class="page">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="company_logo company_logo--corner" aria-label="Company logo placeholder">
+      <span>Company Logo</span>
+    </div>
+
+    <main class="dashboard">
+      <aside class="side-nav" id="sideNav">
+        <div class="logo">
+          <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Visor HR">
+            <style>
+              .mark {
+                transform-origin: 32px 32px;
+                transition: transform 0.3s ease;
+              }
+              .wave {
+                animation: waveFloat 3s ease-in-out infinite;
+              }
+              .mark {
+                animation: markTilt 4s ease-in-out infinite;
+              }
+              @keyframes waveFloat {
+                0% { transform: translate(0, 0); }
+                25% { transform: translate(1px, -1px); }
+                50% { transform: translate(0, 0); }
+                75% { transform: translate(-1px, 1px); }
+                100% { transform: translate(0, 0); }
+              }
+              @keyframes markTilt {
+                0% { transform: rotate(0deg); }
+                50% { transform: rotate(7deg); }
+                100% { transform: rotate(0deg); }
+              }
+            </style>
+            <g class="mark" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M56 32c0 13.255-10.745 24-24 24S8 45.255 8 32 18.745 8 32 8"/>
+              <path class="wave" d="M56 8s-14 0-24 16S8 32 8 32"/>
+            </g>
+          </svg>
+          <span>VisorHR</span>
+        </div>
+        <nav class="menu">
+          <a class="menu-item is-active" href="#" data-view="overview">Dashboard</a>
+          <a class="menu-item" href="#" data-view="employees">Employees</a>
+          <a class="menu-item" href="#" data-view="employee-types">Employee Types</a>
+          <a class="menu-item" href="#" data-view="designations">Designations</a>
+          <a class="menu-item" href="#" data-view="attendance">Attendance</a>
+          <a class="menu-item" href="#">Payroll</a>
+          <a class="menu-item" href="#" data-view="salary-rules">Salary Rule</a>
+          <a class="menu-item" href="#">Reports</a>
+          <a class="menu-item" href="#" data-view="departments">Departments</a>
+          <a class="menu-item" href="#" data-view="sections">Sections</a>
+          <a class="menu-item" href="#" data-view="shifts">Shift Planner</a>
+          <a class="menu-item" href="#">Leave Requests</a>
+          <a class="menu-item" href="#">Compliance</a>
+          <a class="menu-item" id="inviteMenu" href="#" data-view="invite" hidden>Invite Users</a>
+          <a class="menu-item" href="#">Settings</a>
+        </nav>
+        <div class="side-footer">
+          <div class="user-card">
+            <div class="user-label">
+              <span>Signed in as</span>
+              <span class="user-role" id="userRole"></span>
+            </div>
+            <div class="user-row">
+              <strong id="userName">User</strong>
+              <button class="icon-button" type="button" id="profileEditButton" aria-label="Edit profile">
+                <svg fill="#000000" viewBox="0 0 24.00 24.00" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003" aria-hidden="true">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.24000000000000005"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path fill-rule="evenodd" d="M16 12a4 4 0 11-8 0 4 4 0 018 0zm-1.5 0a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                    <path fill-rule="evenodd" d="M12 1c-.268 0-.534.01-.797.028-.763.055-1.345.617-1.512 1.304l-.352 1.45c-.02.078-.09.172-.225.22a8.45 8.45 0 00-.728.303c-.13.06-.246.044-.315.002l-1.274-.776c-.604-.368-1.412-.354-1.99.147-.403.348-.78.726-1.129 1.128-.5.579-.515 1.387-.147 1.99l.776 1.275c.042.069.059.185-.002.315-.112.237-.213.48-.302.728-.05.135-.143.206-.221.225l-1.45.352c-.687.167-1.249.749-1.304 1.512a11.149 11.149 0 000 1.594c.055.763.617 1.345 1.304 1.512l1.45.352c.078.02.172.09.22.225.09.248.191.491.303.729.06.129.044.245.002.314l-.776 1.274c-.368.604-.354 1.412.147 1.99.348.403.726.78 1.128 1.129.579.5 1.387.515 1.99.147l1.275-.776c.069-.042.185-.059.315.002.237.112.48.213.728.302.135.05.206.143.225.221l.352 1.45c.167.687.749 1.249 1.512 1.303a11.125 11.125 0 001.594 0c.763-.054 1.345-.616 1.512-1.303l.352-1.45c.02-.078.09-.172.225-.22.248-.09.491-.191.729-.303.129-.06.245-.044.314-.002l1.274.776c.604.368 1.412.354 1.99-.147.403-.348.78-.726 1.129-1.128.5-.579.515-1.387.147-1.99l-.776-1.275c-.042-.069-.059-.185.002-.315.112-.237.213-.48.302-.728.05-.135.143.206.221-.225l1.45-.352c.687-.167 1.249-.749 1.303-1.512a11.125 11.125 0 000-1.594c-.054-.763-.616-1.345-1.303-1.512l-1.45-.352c-.078-.02-.172-.09-.22-.225a8.469 8.469 0 00-.303-.728c-.06-.13-.044-.246-.002-.315l.776-1.274c.368-.604.354-1.412-.147-1.99-.348-.403-.726-.78-1.128-1.129-.579-.5-1.387-.515-1.99-.147l-1.275.776c-.069.042-.185.059-.315-.002a8.465 8.465 0 00-.728-.302c-.135-.05-.206-.143-.225-.221l-.352-1.45c-.167-.687-.749-1.249-1.512-1.304A11.149 11.149 0 0012 1zm-.69 1.525a9.648 9.648 0 011.38 0c.055.004.135.05.162.16l.351 1.45c.153.628.626 1.08 1.173 1.278.205.074.405.157.6.249a1.832 1.832 0 001.733-.074l1.275-.776c.097-.06.186-.036.228 0 .348.302.674.628.976.976.036.042.06.13 0 .228l-.776 1.274a1.832 1.832 0 00-.074 1.734c.092.195.175.395.248.6.198.547.652 1.02 1.278 1.172l1.45.353c.111.026.157.106.161.161a9.653 9.653 0 010 1.38c-.004.055-.05.135-.16.162l-1.45.351a1.833 1.833 0 00-1.278 1.173 6.926 6.926 0 01-.25.6 1.832 1.832 0 00.075 1.733l.776 1.275c.06.097.036.186 0 .228a9.555 9.555 0 01-.976.976c-.042.036-.13.06-.228 0l-1.275-.776a1.832 1.832 0 00-1.733-.074 6.926 6.926 0 01-.6.248 1.833 1.833 0 00-1.172 1.278l-.353 1.45c-.026.111-.106.157-.161.161a9.653 9.653 0 01-1.38 0c-.055-.004-.135-.05-.162-.16l-.351-1.45a1.833 1.833 0 00-1.173-1.278 6.928 6.928 0 01-.6-.25 1.832 1.832 0 00-1.734.075l-1.274.776c-.097.06-.186.036-.228 0a9.56 9.56 0 01-.976-.976c-.036-.042-.06-.13 0-.228l.776-1.275a1.832 1.832 0 00.074-1.733 6.948 6.948 0 01-.249-.6 1.833 1.833 0 00-1.277-1.172l-1.45-.353c-.111-.026-.157-.106-.161-.161a9.648 9.648 0 010-1.38c.004-.055.05-.135.16-.162l1.45-.351a1.833 1.833 0 001.278-1.173 6.95 6.95 0 01.249-.6 1.832 1.832 0 00-.074-1.734l-.776-1.274c-.06-.097-.036-.186 0-.228.302-.348.628-.674.976-.976.042-.036.13-.06.228 0l1.274.776a1.832 1.832 0 001.734.074 6.95 6.95 0 01.6-.249 1.833 1.833 0 001.172-1.277l.353-1.45c.026-.111.106-.157.161-.161z"></path>
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <a class="link" href="/" id="logoutLink">Log out</a>
+        </div>
+      </aside>
+      <button class="menu-toggle" type="button" id="menuToggle" aria-controls="sideNav" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="side-overlay" id="sideOverlay" aria-hidden="true"></div>
+
+      <section class="content">
+        <header class="content-header">
+          <div class="header-logo" aria-hidden="true">
+            <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+              <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M56 32c0 13.255-10.745 24-24 24S8 45.255 8 32 18.745 8 32 8"/>
+                <path d="M56 8s-14 0-24 16S8 32 8 32"/>
+              </g>
+            </svg>
+          </div>
+          <div class="header-title">
+            <p class="eyebrow" id="sectionLabel">Unit</p>
+            <h2 id="welcomeTitle">Welcome</h2>
+          </div>
+          <div></div>
+        </header>
+        <div class="content-body">
+          <div class="view is-active" data-view="overview">
+            <section class="header-box" aria-label="Unit summary">
+              <div class="overview-grid">
+              <div class="overview-card">
+                <span>Total Employees</span>
+                <strong id="totalEmployees">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Active Employees</span>
+                <strong id="activeEmployees">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Inactive Employees</span>
+                <strong id="inactiveEmployees">--</strong>
+              </div>
+              <div class="overview-card">
+                <span id="newJoinersLabel">New Joiners</span>
+                <strong id="newJoinersValue">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Close</span>
+                <strong id="closeEmployees">--</strong>
+              </div>
+              <div class="overview-card">
+                <span id="releaseLabel">Release</span>
+                <strong id="releaseEmployees">--</strong>
+              </div>
+              <div class="overview-card">
+                <span id="resignLabel">Resign</span>
+                <strong id="resignEmployees">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Worker</span>
+                <strong id="totalWorker">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Staff</span>
+                <strong id="totalStaff">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Officer</span>
+                <strong id="totalOfficer">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Male <strong class="symbol">&male;</strong></span>
+                <strong id="totalMale">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Female <strong class="symbol">&female;</strong></span>
+                <strong id="totalFemale">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Cash Pay Emp</span>
+                <strong id="cashPay">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Bank Pay Emp</span>
+                <strong id="bankPay">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Mobile Pay Emp</span>
+                <strong id="mobilePay">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Tax Holder</span>
+                <strong id="taxHolder">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Quarter Holder</span>
+                <strong id="quarterHolder">--</strong>
+              </div>
+              <div class="overview-card">
+                <span id="incrementLabel">Increment</span>
+                <strong id="incrementValue">--</strong>
+              </div>
+              <div class="overview-card is-hidden">
+                <span>Off Duty</span>
+                <strong id="offDuty">--</strong>
+              </div>
+              <div class="overview-card">
+                <span id="leaveLabel">Leave</span>
+                <strong id="leaveValue">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>On Maternity</span>
+                <strong id="maternityCount">--</strong>
+              </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="employees">
+            <section class="employee-shell" aria-label="Employee management">
+              <div class="employee-grid is-single">
+                <div class="employee-card department-list-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Employee</p>
+                      <h3>Employee Entry</h3>
+                    </div>
+                    <div class="employee-header-meta">
+                      <p class="service-hint" id="lengthOfService"></p>
+                      <p class="leave-hint" id="leaveBalance"></p>
+                    </div>
+                  </div>
+                  <form class="employee-form" id="employeeForm">
+                    <input type="hidden" id="employeeRowId" value="" />
+                    <div class="section-title">Identity</div>
+                    <div class="identity-grid">
+                      <div class="identity-col">
+                        <div class="field">
+                          <label for="empCode">Employee Code</label>
+                          <input id="empCode" name="empCode" type="text" placeholder="EMP-0001" required />
+                        </div>
+                        <div class="field">
+                          <label for="erpCode">ERP Code</label>
+                          <input id="erpCode" name="erpCode" type="text" placeholder="ERP-001" />
+                        </div>
+                        <div class="field">
+                          <label for="empName">Employee Name</label>
+                          <input id="empName" name="empName" type="text" placeholder="Full name" required />
+                        </div>
+                        <div class="field">
+                          <label for="empNameBang">Employee Name (Bangla)</label>
+                          <input id="empNameBang" name="empNameBang" type="text" placeholder="নাম" />
+                        </div>
+                        <div class="field">
+                          <label for="fatherName">Father's Name</label>
+                          <input id="fatherName" name="fatherName" type="text" placeholder="Father's name" />
+                        </div>
+                        <div class="field">
+                          <label for="fatherNameBang">Father's Name (Bangla)</label>
+                          <input id="fatherNameBang" name="fatherNameBang" type="text" placeholder="পিতা" />
+                        </div>
+                      </div>
+                      <div class="identity-col">
+                        <div class="field">
+                          <label for="motherNameBang">Mother's Name (Bangla)</label>
+                          <input id="motherNameBang" name="motherNameBang" type="text" placeholder="মাতা" />
+                        </div>
+                        <div class="field">
+                          <label for="spouseNameBang">Husband/Wife (Bangla)</label>
+                          <input id="spouseNameBang" name="spouseNameBang" type="text" placeholder="স্বামী/স্ত্রী" />
+                        </div>
+                        <div class="field">
+                          <label for="motherName">Mother's Name</label>
+                          <input id="motherName" name="motherName" type="text" placeholder="Mother's name" />
+                        </div>
+                        <div class="field">
+                          <label for="spouseName">Husband/Wife</label>
+                          <input id="spouseName" name="spouseName" type="text" placeholder="Husband or wife" />
+                        </div>
+                        <div class="field">
+                          <label for="gender">Gender</label>
+                          <select id="gender" name="gender">
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                          </select>
+                        </div>
+                        <div class="field">
+                          <label for="religion">Religion</label>
+                          <select id="religion" name="religion">
+                            <option value="ISLAM">Islam</option>
+                            <option value="HINDU">Hindu</option>
+                            <option value="KRISTIAN">Kristian</option>
+                            <option value="BUDDHIST">Buddhist</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="identity-col">
+                        <div class="field">
+                          <label for="maritalStatus">Marital Status</label>
+                          <select id="maritalStatus" name="maritalStatus">
+                            <option value="SINGLE">Single</option>
+                            <option value="MARRIED">Married</option>
+                            <option value="DIVORCED">Divorced</option>
+                            <option value="WIDOW">Widow</option>
+                          </select>
+                        </div>
+                        <div class="field">
+                          <label for="bloodGroup">Blood Group</label>
+                          <select id="bloodGroup" name="bloodGroup">
+                            <option value="A-">A-</option>
+                            <option value="A+">A+</option>
+                            <option value="B-">B-</option>
+                            <option value="B+">B+</option>
+                            <option value="O-">O-</option>
+                            <option value="O+">O+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="N/A">N/A</option>
+                          </select>
+                        </div>
+                        <div class="field">
+                          <label for="birthDate">Date of Birth</label>
+                          <input id="birthDate" name="birthDate" type="text" placeholder="dd-mmm-yyyy" />
+                        </div>
+                        <div class="field">
+                          <label for="age">Age</label>
+                          <input id="age" name="age" type="text" placeholder="Years, months, days" />
+                        </div>
+                        <div class="field">
+                          <label for="education">Education</label>
+                          <input id="education" name="education" type="text" placeholder="Education" />
+                        </div>
+                        <div class="field">
+                          <label for="experience">Experience</label>
+                          <input id="experience" name="experience" type="text" placeholder="Experience" />
+                        </div>
+                      </div>
+                      <div class="identity-media">
+                        <div class="media-card">
+                          <span>Employee Photo</span>
+                      <div class="media-preview">
+                        <img id="employeePhotoPreview" alt="Employee photo preview" class="is-empty" />
+                        <span class="media-placeholder">No Preview</span>
+                      </div>
+                          <div class="media-actions">
+                            <input id="employeePhotoInput" type="file" accept="image/*" hidden />
+                            <button class="btn-outline" type="button" id="employeePhotoUpload">Upload Photo</button>
+                          </div>
+                        </div>
+                        <div class="media-card signature-card">
+                          <span>Employee Signature</span>
+                      <div class="media-preview">
+                        <img id="employeeSignaturePreview" alt="Employee signature preview" class="is-empty" />
+                        <span class="media-placeholder">No Preview</span>
+                      </div>
+                          <div class="media-actions">
+                            <input id="employeeSignatureInput" type="file" accept="image/*" hidden />
+                            <button class="btn-outline" type="button" id="employeeSignatureUpload">Upload Signature</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="identity-extra parent">
+                      <div class="div1 field">
+                        <label for="nationalId">National ID</label>
+                        <input id="nationalId" name="nationalId" type="text" placeholder="National ID" />
+                      </div>
+                      <div class="div2 field">
+                        <label for="licenseNo">License No</label>
+                        <input id="licenseNo" name="licenseNo" type="text" placeholder="License no" />
+                      </div>
+                    </div>
+
+                    <div class="section-title">Contact</div>
+                    <div class="field">
+                      <label for="cellNo">Cell No</label>
+                      <input id="cellNo" name="cellNo" type="tel" placeholder="01XXXXXXXXX" />
+                    </div>
+                    <div class="field">
+                      <label for="emergencyCell">Emergency Cell</label>
+                      <input id="emergencyCell" name="emergencyCell" type="tel" placeholder="Emergency contact" />
+                    </div>
+                    <div class="field">
+                      <label for="email">Email</label>
+                      <input id="email" name="email" type="email" placeholder="name@example.com" />
+                    </div>
+
+                    <div class="section-title">Present Address</div>
+                    <div class="field">
+                      <label for="presentVill">Village</label>
+                      <input id="presentVill" name="presentVill" type="text" placeholder="Village" />
+                    </div>
+                    <div class="field">
+                      <label for="presentPo">P.O.</label>
+                      <input id="presentPo" name="presentPo" type="text" placeholder="Post office" />
+                    </div>
+                    <div class="field">
+                      <label for="presentPs">P.S.</label>
+                      <input id="presentPs" name="presentPs" type="text" placeholder="Police station" />
+                    </div>
+                    <div class="field">
+                      <label for="presentDist">District</label>
+                      <input id="presentDist" name="presentDist" type="text" placeholder="District" />
+                    </div>
+
+                    <div class="section-title">Present Address (Bangla)</div>
+                    <div class="field">
+                      <label for="presentVillBang">Village (Bangla)</label>
+                      <input id="presentVillBang" name="presentVillBang" type="text" placeholder="গ্রাম" />
+                    </div>
+                    <div class="field">
+                      <label for="presentPoBang">P.O. (Bangla)</label>
+                      <input id="presentPoBang" name="presentPoBang" type="text" placeholder="ডাকঘর" />
+                    </div>
+                    <div class="field">
+                      <label for="presentPsBang">P.S. (Bangla)</label>
+                      <input id="presentPsBang" name="presentPsBang" type="text" placeholder="থানা" />
+                    </div>
+                    <div class="field">
+                      <label for="presentDistBang">District (Bangla)</label>
+                      <input id="presentDistBang" name="presentDistBang" type="text" placeholder="জেলা" />
+                    </div>
+
+                    <div class="section-title">Permanent Address</div>
+                    <div class="field">
+                      <label for="permanentVill">Village</label>
+                      <input id="permanentVill" name="permanentVill" type="text" placeholder="Village" />
+                    </div>
+                    <div class="field">
+                      <label for="permanentPo">P.O.</label>
+                      <input id="permanentPo" name="permanentPo" type="text" placeholder="Post office" />
+                    </div>
+                    <div class="field">
+                      <label for="permanentPs">P.S.</label>
+                      <input id="permanentPs" name="permanentPs" type="text" placeholder="Police station" />
+                    </div>
+                    <div class="field">
+                      <label for="permanentDist">District</label>
+                      <input id="permanentDist" name="permanentDist" type="text" placeholder="District" />
+                    </div>
+
+                    <div class="section-title">Permanent Address (Bangla)</div>
+                    <div class="field">
+                      <label for="permanentVillBang">Village (Bangla)</label>
+                      <input id="permanentVillBang" name="permanentVillBang" type="text" placeholder="গ্রাম" />
+                    </div>
+                    <div class="field">
+                      <label for="permanentPoBang">P.O. (Bangla)</label>
+                      <input id="permanentPoBang" name="permanentPoBang" type="text" placeholder="ডাকঘর" />
+                    </div>
+                    <div class="field">
+                      <label for="permanentPsBang">P.S. (Bangla)</label>
+                      <input id="permanentPsBang" name="permanentPsBang" type="text" placeholder="থানা" />
+                    </div>
+                    <div class="field">
+                      <label for="permanentDistBang">District (Bangla)</label>
+                      <input id="permanentDistBang" name="permanentDistBang" type="text" placeholder="জেলা" />
+                    </div>
+
+                    <div class="section-title">Nominee</div>
+                    <div class="field">
+                      <label for="nomineeName">Nominee</label>
+                      <input id="nomineeName" name="nomineeName" type="text" placeholder="Nominee name" />
+                    </div>
+                    <div class="field">
+                      <label for="nomineeRelation">Relation</label>
+                      <select id="nomineeRelation" name="nomineeRelation">
+                        <option value="">Select relation</option>
+                        <option value="Father">Father</option>
+                        <option value="Mother">Mother</option>
+                        <option value="Sister">Sister</option>
+                        <option value="Brother">Brother</option>
+                        <option value="Husband">Husband</option>
+                        <option value="Wife">Wife</option>
+                        <option value="Son">Son</option>
+                        <option value="Douther">Douther</option>
+                        <option value="Uncle">Uncle</option>
+                        <option value="Aunt">Aunt</option>
+                        <option value="Cousin">Cousin</option>
+                        <option value="Father-in-Law">Father-in-Law</option>
+                        <option value="Mother-in-Law">Mother-in-Law</option>
+                        <option value="Sister-in-Law">Sister-in-Law</option>
+                        <option value="Brother-in-Law">Brother-in-Law</option>
+                        <option value="Son-in-Law">Son-in-Law</option>
+                        <option value="Douther-in-Law">Douther-in-Law</option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="nomineeCell">Nominee Cell</label>
+                      <input id="nomineeCell" name="nomineeCell" type="tel" placeholder="Nominee cell" />
+                    </div>
+                    <div class="field">
+                      <label for="nomineeBangla">Nominee Bangla</label>
+                      <input id="nomineeBangla" name="nomineeBangla" type="text" placeholder="নমিনির নাম" />
+                    </div>
+
+                    <div class="section-title">Employment</div>
+                    <div class="field">
+                      <label for="unit">Unit</label>
+                      <select id="unit" name="unit"></select>
+                    </div>
+                    <div class="field">
+                      <label for="category">Category</label>
+                      <select id="category" name="category"></select>
+                    </div>
+                    <div class="field">
+                      <label for="department">Department</label>
+                      <select id="department" name="department"></select>
+                    </div>
+                    <div class="field">
+                      <label for="section">Section</label>
+                      <select id="section" name="section"></select>
+                    </div>
+                    <div class="field">
+                      <label for="group">Group</label>
+                      <select id="group" name="group"></select>
+                    </div>
+                    <div class="field">
+                      <label for="designation">Designation</label>
+                      <select id="designation" name="designation"></select>
+                    </div>
+                    <div class="field">
+                      <label for="floor">Floor</label>
+                      <select id="floor" name="floor"></select>
+                    </div>
+                    <div class="field">
+                      <label for="workingTime">Working Time</label>
+                      <input id="workingTime" name="workingTime" type="text" placeholder="Working time" />
+                    </div>
+                    <div class="field">
+                      <label for="salaryRule">Salary Rule</label>
+                      <select id="salaryRule" name="salaryRule"></select>
+                    </div>
+                    <div class="field">
+                      <label for="grade">Grade</label>
+                      <input id="grade" name="grade" type="text" placeholder="Grade" />
+                    </div>
+                    <div class="field">
+                      <label for="joinDate">Joining Date</label>
+                      <input id="joinDate" name="joinDate" type="text" placeholder="dd-mmm-yyyy" />
+                    </div>
+                    <div class="field">
+                      <label for="status">Status</label>
+                      <select id="status" name="status">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Close">Close</option>
+                        <option value="Newly">Newly</option>
+                        <option value="Maternity">Maternity</option>
+                        <option value="Long Absent">Long Absent</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="closeDate">Close Date</label>
+                      <input id="closeDate" name="closeDate" type="text" placeholder="dd-mmm-yyyy" />
+                    </div>
+                    <div class="field">
+                      <label for="closeReason">Reasons</label>
+                      <select id="closeReason" name="closeReason">
+                        <option value="">Select reason</option>
+                        <option value="Removal">Removal</option>
+                        <option value="Dismissal">Dismissal</option>
+                        <option value="Discharge">Discharge</option>
+                        <option value="Retirement">Retirement</option>
+                        <option value="Resignation">Resignation</option>
+                        <option value="Termination">Termination</option>
+                        <option value="Death Benifit">Death Benifit</option>
+                        <option value="Retrenchment">Retrenchment</option>
+                        <option value="Job Separation">Job Separation</option>
+                        <option value="Un-Authorization">Un-Authorization</option>
+                        <option value="Long Absence Un-Notice">Long Absence Un-Notice</option>
+                        <option value="Maternity Leave With Pay">Maternity Leave With Pay</option>
+                        <option value="Maternity Leave Without Pay">Maternity Leave Without Pay</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="weekend">Weekend</label>
+                      <select id="weekend" name="weekend">
+                        <option value="N/A">N/A</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="proximityNo">Proximity</label>
+                      <input id="proximityNo" name="proximityNo" type="text" placeholder="Proximity no" />
+                    </div>
+                    <div class="field is-full">
+                      <span>Employment Flags</span>
+                      <div class="option-group">
+                        <label class="checkbox"><input type="checkbox" id="resignGiven" name="resignGiven" />Resign Given</label>
+                        <label class="checkbox"><input type="checkbox" id="contractual" name="contractual" />Contractual</label>
+                        <label class="checkbox"><input type="checkbox" id="transport" name="transport" />Transport</label>
+                      </div>
+                    </div>
+
+                    <div class="section-title">Payroll & Benefits</div>
+                    <div class="field">
+                      <label for="gross">Gross</label>
+                      <input id="gross" name="gross" type="number" step="0.01" placeholder="Gross" />
+                    </div>
+                    <div class="field">
+                      <label for="basic">Basic</label>
+                      <input id="basic" name="basic" type="number" step="0.01" placeholder="Basic" />
+                    </div>
+                    <div class="field">
+                      <label for="accountNo">Account No</label>
+                      <input id="accountNo" name="accountNo" type="text" placeholder="Account no" />
+                    </div>
+                    <div class="field">
+                      <label for="elSegment">EL Segment</label>
+                      <select id="elSegment" name="elSegment">
+                        <option value="N/A">N/A</option>
+                        <option value="July">July</option>
+                        <option value="January">January</option>
+                      </select>
+                    </div>
+                    <div class="field is-full">
+                      <span>Pay Type</span>
+                      <div class="option-group">
+                        <label class="checkbox"><input type="radio" name="payType" value="Bank" />Bank</label>
+                        <label class="checkbox"><input type="radio" name="payType" value="Mobile B" />Mobile B</label>
+                        <label class="checkbox"><input type="radio" name="payType" value="Cash" checked />Cash</label>
+                      </div>
+                    </div>
+                    <div class="field is-full">
+                      <span>Benefits</span>
+                      <div class="option-group">
+                        <label class="checkbox"><input type="checkbox" id="otHolder" name="otHolder" />OT Holder</label>
+                        <label class="checkbox"><input type="checkbox" id="elHolder" name="elHolder" />EL Holder</label>
+                        <label class="checkbox"><input type="checkbox" id="quarterHolder" name="quarterHolder" />Quarter</label>
+                        <label class="checkbox"><input type="checkbox" id="taxHolder" name="taxHolder" />Tax</label>
+                      </div>
+                    </div>
+
+                    <div class="section-title">Remarks & Attachments</div>
+                    <div class="field is-full">
+                      <label for="remarks">Remarks</label>
+                      <textarea id="remarks" name="remarks" rows="3" placeholder="Remarks"></textarea>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="primary" type="submit" id="employeeSave">Save Employee</button>
+                      <button class="btn-outline" type="button" id="employeeReset">Clear</button>
+                      <button class="btn-danger" type="button" id="employeeDelete" disabled>Delete</button>
+                    </div>
+                    <p class="form-hint" id="employeeNotice"></p>
+                  </form>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="invite">
+            <section class="employee-shell" aria-label="Invite users">
+              <div class="employee-grid is-single">
+                <div class="employee-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Access</p>
+                      <h3>Invite Users</h3>
+                    </div>
+                  </div>
+                  <form class="form" id="inviteForm" autocomplete="on">
+                    <label class="field">
+                      <span>Email</span>
+                      <input type="email" name="inviteEmail" placeholder="user@company.com" required />
+                    </label>
+                    <label class="field">
+                      <span>Expires in (days)</span>
+                      <input type="number" name="inviteExpiresInDays" min="1" max="30" placeholder="7" />
+                    </label>
+                    <button class="primary" type="submit">Send invitation</button>
+                    <div class="notice" id="inviteNotice" role="status" aria-live="polite"></div>
+                  </form>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="employee-types">
+            <section class="employee-shell" aria-label="Employee type management">
+              <div class="employee-grid is-stack">
+                <div class="employee-card emp-type-list-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Directory</p>
+                      <h3>Employee Types</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="empTypeAdd">+ Add Type</button>
+                      <button class="btn-outline" type="button" id="empTypeRefresh">Refresh</button>
+                    </div>
+                  </div>
+                  <p class="form-hint" id="empTypeNotice"></p>
+                  <div class="field">
+                    <label for="empTypeSearch">Search</label>
+                    <input id="empTypeSearch" name="empTypeSearch" type="text" placeholder="Search type" />
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="empTypeTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Type</th>
+                          <th>Position Level</th>
+                          <th>Tiffin Allowance</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="attendance">
+            <section class="employee-shell" aria-label="Attendance management">
+              <div class="employee-grid is-stack">
+                <div class="employee-card attendance-list-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Attendance</p>
+                      <h3>Attendance Details</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="attendanceRefresh">Search</button>
+                    </div>
+                  </div>
+                  <div class="employee-form">
+                    <div class="field">
+                      <label for="attendanceFrom">From Date</label>
+                      <input id="attendanceFrom" name="attendanceFrom" type="date" />
+                    </div>
+                    <div class="field">
+                      <label for="attendanceTo">To Date</label>
+                      <input id="attendanceTo" name="attendanceTo" type="date" />
+                    </div>
+                    <div class="field">
+                      <label for="attendanceEmpCode">Employee Code</label>
+                      <input id="attendanceEmpCode" name="attendanceEmpCode" type="text" placeholder="EMP-0001" />
+                    </div>
+                    <div class="field">
+                      <label for="attendanceStatus">Status</label>
+                      <select id="attendanceStatus" name="attendanceStatus">
+                        <option value="">All</option>
+                        <option value="P">Present</option>
+                        <option value="A">Absent</option>
+                        <option value="L">Leave</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="attendanceShift">Shift</label>
+                      <select id="attendanceShift" name="attendanceShift">
+                        <option value="">All</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="attendanceTable">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Emp Code</th>
+                          <th>Emp Name</th>
+                          <th>Status</th>
+                          <th>In</th>
+                          <th>Out</th>
+                          <th>Late</th>
+                          <th>Early</th>
+                          <th>OT</th>
+                          <th>Shift</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="designations">
+            <section class="employee-shell" aria-label="Designation management">
+              <div class="employee-grid is-stack">
+                <div class="employee-card designation-list-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Directory</p>
+                      <h3>Designations</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="designationAdd">+ Add Designation</button>
+                      <button class="btn-outline" type="button" id="designationRefresh">Refresh</button>
+                    </div>
+                  </div>
+                  <p class="form-hint" id="designationNotice"></p>
+                  <div class="field">
+                    <label for="designationSearch">Search</label>
+                    <input id="designationSearch" name="designationSearch" type="text" placeholder="Search designation" />
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="designationTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Designation</th>
+                          <th>Grade</th>
+                          <th>Priority</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="salary-rules">
+            <section class="employee-shell" aria-label="Salary rule management">
+              <div class="employee-grid is-stack">
+                <div class="employee-card salary-rule-list-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Directory</p>
+                      <h3>Salary Rules</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="salaryRuleAdd">+ Add Rule</button>
+                      <button class="btn-outline" type="button" id="salaryRuleRefresh">Refresh</button>
+                    </div>
+                  </div>
+                  <p class="form-hint" id="salaryRuleNotice"></p>
+                  <div class="field">
+                    <label for="salaryRuleSearch">Search</label>
+                    <input id="salaryRuleSearch" name="salaryRuleSearch" type="text" placeholder="Search rule" />
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="salaryRuleTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Rule</th>
+                          <th>Basic</th>
+                          <th>House</th>
+                          <th>Medical</th>
+                          <th>Transport</th>
+                          <th>Food</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="departments">
+            <section class="employee-shell" aria-label="Department management">
+              <div class="employee-grid is-stack">
+                <div class="employee-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Directory</p>
+                      <h3>Department List</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="departmentAdd">+ Add Department</button>
+                      <button class="btn-outline" type="button" id="departmentRefresh">Refresh</button>
+                    </div>
+                  </div>
+                  <p class="form-hint" id="departmentNotice"></p>
+                  <div class="field">
+                    <label for="departmentSearch">Search</label>
+                    <input id="departmentSearch" name="departmentSearch" type="text" placeholder="Search department" />
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="departmentTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Department</th>
+                          <th>Unit</th>
+                          <th>Short</th>
+                          <th>Priority</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="sections">
+            <section class="employee-shell" aria-label="Section management">
+              <div class="employee-grid is-stack">
+                <div class="employee-card section-list-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Directory</p>
+                      <h3>Section List</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="sectionAdd">+ Add Section</button>
+                      <button class="btn-outline" type="button" id="sectionRefresh">Refresh</button>
+                    </div>
+                  </div>
+                  <p class="form-hint" id="sectionNotice"></p>
+                  <div class="field">
+                    <label for="sectionSearch">Search</label>
+                    <input id="sectionSearch" name="sectionSearch" type="text" placeholder="Search section" />
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="sectionTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Section</th>
+                          <th>Unit</th>
+                          <th>Show Together</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="shifts">
+            <section class="employee-shell" aria-label="Shift management">
+              <div class="employee-grid is-stack">
+                <div class="employee-card shift-list-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Directory</p>
+                      <h3>Shift List</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="shiftAdd">+ Add Shift</button>
+                      <button class="btn-outline" type="button" id="shiftRefresh">Refresh</button>
+                    </div>
+                  </div>
+                  <p class="form-hint" id="shiftNotice"></p>
+                  <div class="field">
+                    <label for="shiftSearch">Search</label>
+                    <input id="shiftSearch" name="shiftSearch" type="text" placeholder="Search shift" />
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="shiftTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Shift</th>
+                          <th>In</th>
+                          <th>Out</th>
+                          <th>Grace</th>
+                          <th>Lunch</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="departmentModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="department-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="departmentModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Edit</p>
+          <h3 id="departmentModalTitle">Edit Department</h3>
+        </div>
+        <button class="btn-outline btn-small" type="button" id="departmentModalClose">Close</button>
+      </div>
+      <div class="modal-body">
+        <form class="employee-form" id="departmentModalForm">
+          <input type="hidden" id="departmentModalId" value="" />
+          <div class="field">
+            <label for="departmentModalName">Department Name</label>
+            <input id="departmentModalName" name="departmentModalName" type="text" placeholder="Department name" required />
+          </div>
+          <div class="field">
+            <label for="departmentModalUnit">Unit</label>
+            <select id="departmentModalUnit" name="departmentModalUnit" required></select>
+          </div>
+          <div class="field">
+            <label for="departmentModalShortName">Short Name</label>
+            <input id="departmentModalShortName" name="departmentModalShortName" type="text" placeholder="Short name" />
+          </div>
+          <div class="field">
+            <label for="departmentModalPriority">Show Priority</label>
+            <input id="departmentModalPriority" name="departmentModalPriority" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="departmentModalBangla">Bangla Name</label>
+            <input id="departmentModalBangla" name="departmentModalBangla" type="text" placeholder="Bangla department name" />
+          </div>
+          <div class="field is-full">
+            <label for="departmentModalRemarks">Remarks</label>
+            <input id="departmentModalRemarks" name="departmentModalRemarks" type="text" placeholder="Remarks" />
+          </div>
+          <div class="employee-actions">
+            <button class="btn-outline" type="submit" id="departmentModalSubmit">Save Changes</button>
+          </div>
+          <p class="form-hint" id="departmentModalNotice"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="shiftModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="shift-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="shiftModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Shift</p>
+          <h3 id="shiftModalTitle">Add Shift</h3>
+        </div>
+        <button class="btn-outline btn-small" type="button" id="shiftModalClose">Close</button>
+      </div>
+      <div class="modal-body">
+        <form class="employee-form" id="shiftModalForm">
+          <input type="hidden" id="shiftModalId" value="" />
+          <div class="field">
+            <label for="shiftModalName">Shift Name</label>
+            <input id="shiftModalName" name="shiftModalName" type="text" placeholder="Shift name" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalInTime">In Time</label>
+            <input id="shiftModalInTime" name="shiftModalInTime" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalOutTime">Out Time</label>
+            <input id="shiftModalOutTime" name="shiftModalOutTime" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalInFrom">In Time From</label>
+            <input id="shiftModalInFrom" name="shiftModalInFrom" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalOutFrom">Out Time From</label>
+            <input id="shiftModalOutFrom" name="shiftModalOutFrom" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalGrace">Grace</label>
+            <input id="shiftModalGrace" name="shiftModalGrace" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalGraceOut">Grace Out</label>
+            <input id="shiftModalGraceOut" name="shiftModalGraceOut" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalLunchStart">Lunch Start</label>
+            <input id="shiftModalLunchStart" name="shiftModalLunchStart" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalLunchEnd">Lunch End</label>
+            <input id="shiftModalLunchEnd" name="shiftModalLunchEnd" type="text" placeholder="HH:MM" required />
+          </div>
+          <div class="field">
+            <label for="shiftModalInStart">In Time Start</label>
+            <input id="shiftModalInStart" name="shiftModalInStart" type="text" placeholder="HH:MM" />
+          </div>
+          <div class="field">
+            <label for="shiftModalOutEnd">Out Time End</label>
+            <input id="shiftModalOutEnd" name="shiftModalOutEnd" type="text" placeholder="HH:MM" />
+          </div>
+          <div class="field">
+            <label for="shiftModalDinerStart">Diner Start</label>
+            <input id="shiftModalDinerStart" name="shiftModalDinerStart" type="text" placeholder="HH:MM" />
+          </div>
+          <div class="field">
+            <label for="shiftModalDinerEnd">Diner End</label>
+            <input id="shiftModalDinerEnd" name="shiftModalDinerEnd" type="text" placeholder="HH:MM" />
+          </div>
+          <div class="field">
+            <label for="shiftModalDefaultStatus">Default Status</label>
+            <input id="shiftModalDefaultStatus" name="shiftModalDefaultStatus" type="text" placeholder="Default status" />
+          </div>
+          <div class="field is-full">
+            <label for="shiftModalRemarks">Remarks</label>
+            <input id="shiftModalRemarks" name="shiftModalRemarks" type="text" placeholder="Remarks" />
+          </div>
+          <div class="employee-actions">
+            <button class="btn-outline" type="submit" id="shiftModalSubmit">Save Shift</button>
+          </div>
+          <p class="form-hint" id="shiftModalNotice"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="sectionModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="section-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="sectionModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Section</p>
+          <h3 id="sectionModalTitle">Add Section</h3>
+        </div>
+        <button class="btn-outline btn-small" type="button" id="sectionModalClose">Close</button>
+      </div>
+      <div class="modal-body">
+        <form class="employee-form" id="sectionModalForm">
+          <input type="hidden" id="sectionModalId" value="" />
+          <div class="field">
+            <label for="sectionModalName">Section Name</label>
+            <input id="sectionModalName" name="sectionModalName" type="text" placeholder="Section name" required />
+          </div>
+          <div class="field">
+            <label for="sectionModalUnit">Unit</label>
+            <select id="sectionModalUnit" name="sectionModalUnit" required></select>
+          </div>
+          <div class="field">
+            <label for="sectionModalShowTogether">Show Together</label>
+            <input id="sectionModalShowTogether" name="sectionModalShowTogether" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="sectionModalBangla">Bangla Name</label>
+            <input id="sectionModalBangla" name="sectionModalBangla" type="text" placeholder="Bangla section name" />
+          </div>
+          <div class="field is-full">
+            <label for="sectionModalRemarks">Remarks</label>
+            <input id="sectionModalRemarks" name="sectionModalRemarks" type="text" placeholder="Remarks" />
+          </div>
+          <div class="employee-actions">
+            <button class="btn-outline" type="submit" id="sectionModalSubmit">Save Section</button>
+          </div>
+          <p class="form-hint" id="sectionModalNotice"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="empTypeModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="emp-type-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="empTypeModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Employee Type</p>
+          <h3 id="empTypeModalTitle">Add Employee Type</h3>
+        </div>
+        <button class="btn-outline btn-small" type="button" id="empTypeModalClose">Close</button>
+      </div>
+      <div class="modal-body">
+        <form class="employee-form" id="empTypeModalForm">
+          <input type="hidden" id="empTypeModalId" value="" />
+          <div class="field">
+            <label for="empTypeModalName">Type Name</label>
+            <input id="empTypeModalName" name="empTypeModalName" type="text" placeholder="Type name" required />
+          </div>
+          <div class="field">
+            <label for="empTypeModalPosition">Position Level</label>
+            <input id="empTypeModalPosition" name="empTypeModalPosition" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="empTypeModalTiffin">Tiffin Allowance</label>
+            <input id="empTypeModalTiffin" name="empTypeModalTiffin" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="empTypeModalBangla">Bangla Type</label>
+            <input id="empTypeModalBangla" name="empTypeModalBangla" type="text" placeholder="Bangla type name" />
+          </div>
+          <div class="field is-full">
+            <label for="empTypeModalRemarks">Remarks</label>
+            <input id="empTypeModalRemarks" name="empTypeModalRemarks" type="text" placeholder="Remarks" />
+          </div>
+          <div class="employee-actions">
+            <button class="btn-outline" type="submit" id="empTypeModalSubmit">Save Type</button>
+          </div>
+          <p class="form-hint" id="empTypeModalNotice"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="designationModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="designation-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="designationModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Designation</p>
+          <h3 id="designationModalTitle">Add Designation</h3>
+        </div>
+        <button class="btn-outline btn-small" type="button" id="designationModalClose">Close</button>
+      </div>
+      <div class="modal-body">
+        <form class="employee-form" id="designationModalForm">
+          <input type="hidden" id="designationModalId" value="" />
+          <div class="field">
+            <label for="designationModalName">Designation Name</label>
+            <input id="designationModalName" name="designationModalName" type="text" placeholder="Designation name" required />
+          </div>
+          <div class="field">
+            <label for="designationModalGrade">Grade</label>
+            <input id="designationModalGrade" name="designationModalGrade" type="text" placeholder="Grade" />
+          </div>
+          <div class="field">
+            <label for="designationModalPositionId">Position ID</label>
+            <input id="designationModalPositionId" name="designationModalPositionId" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="designationModalPosition">Position</label>
+            <input id="designationModalPosition" name="designationModalPosition" type="text" placeholder="Position" />
+          </div>
+          <div class="field">
+            <label for="designationModalPriority">Position Priority</label>
+            <input id="designationModalPriority" name="designationModalPriority" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="designationModalBonus">App Attd Bonus</label>
+            <input id="designationModalBonus" name="designationModalBonus" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="designationModalOffDay">Off Day Allowance</label>
+            <input id="designationModalOffDay" name="designationModalOffDay" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="designationModalBangGrade">Bangla Grade</label>
+            <input id="designationModalBangGrade" name="designationModalBangGrade" type="text" placeholder="Bangla grade" />
+          </div>
+          <div class="field">
+            <label for="designationModalBangName">Bangla Designation</label>
+            <input id="designationModalBangName" name="designationModalBangName" type="text" placeholder="Bangla designation" />
+          </div>
+          <div class="field">
+            <label for="designationModalDormEntitle">Dorm Entitle</label>
+            <input id="designationModalDormEntitle" name="designationModalDormEntitle" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="designationModalNonDormitory">Non Dormitory</label>
+            <input id="designationModalNonDormitory" name="designationModalNonDormitory" type="number" placeholder="0" />
+          </div>
+          <div class="field is-full">
+            <label for="designationModalRemarks">Remarks</label>
+            <input id="designationModalRemarks" name="designationModalRemarks" type="text" placeholder="Remarks" />
+          </div>
+          <div class="employee-actions">
+            <button class="btn-outline" type="submit" id="designationModalSubmit">Save Designation</button>
+          </div>
+          <p class="form-hint" id="designationModalNotice"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="salaryRuleModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="salary-rule-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="salaryRuleModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Salary Rule</p>
+          <h3 id="salaryRuleModalTitle">Add Salary Rule</h3>
+        </div>
+        <button class="btn-outline btn-small" type="button" id="salaryRuleModalClose">Close</button>
+      </div>
+      <div class="modal-body">
+        <form class="employee-form" id="salaryRuleModalForm">
+          <input type="hidden" id="salaryRuleModalId" value="" />
+          <div class="field">
+            <label for="salaryRuleModalName">Rule Name</label>
+            <input id="salaryRuleModalName" name="salaryRuleModalName" type="text" placeholder="Rule name" required />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalBasic">Basic</label>
+            <input id="salaryRuleModalBasic" name="salaryRuleModalBasic" type="number" placeholder="0" required />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalHouse">House Rent</label>
+            <input id="salaryRuleModalHouse" name="salaryRuleModalHouse" type="number" placeholder="0" required />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalMedical">Medical</label>
+            <input id="salaryRuleModalMedical" name="salaryRuleModalMedical" type="number" placeholder="0" required />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalTransport">Transport</label>
+            <input id="salaryRuleModalTransport" name="salaryRuleModalTransport" type="number" placeholder="0" required />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalFood">Food</label>
+            <input id="salaryRuleModalFood" name="salaryRuleModalFood" type="number" placeholder="0" required />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalAttdBonus">Attd Bonus</label>
+            <input id="salaryRuleModalAttdBonus" name="salaryRuleModalAttdBonus" type="number" placeholder="0" required />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalMinBonus">Min Bonus</label>
+            <input id="salaryRuleModalMinBonus" name="salaryRuleModalMinBonus" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalDearAlw">Dear Allowance</label>
+            <input id="salaryRuleModalDearAlw" name="salaryRuleModalDearAlw" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalAttdAlw">Attd Allowance</label>
+            <input id="salaryRuleModalAttdAlw" name="salaryRuleModalAttdAlw" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalOtAlw">OT Allowance</label>
+            <input id="salaryRuleModalOtAlw" name="salaryRuleModalOtAlw" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalNightBill">Night Bill</label>
+            <input id="salaryRuleModalNightBill" name="salaryRuleModalNightBill" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalWashingBill">Washing Bill</label>
+            <input id="salaryRuleModalWashingBill" name="salaryRuleModalWashingBill" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalDriverAlw">Driver Allowance</label>
+            <input id="salaryRuleModalDriverAlw" name="salaryRuleModalDriverAlw" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalExportAlw">Export Allowance</label>
+            <input id="salaryRuleModalExportAlw" name="salaryRuleModalExportAlw" type="number" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalIsDeduct">Is Deduct</label>
+            <select id="salaryRuleModalIsDeduct" name="salaryRuleModalIsDeduct">
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="salaryRuleModalStatus">Rule Status</label>
+            <input id="salaryRuleModalStatus" name="salaryRuleModalStatus" type="text" placeholder="Status" />
+          </div>
+          <div class="field is-full">
+            <label for="salaryRuleModalRemarks">Remarks</label>
+            <input id="salaryRuleModalRemarks" name="salaryRuleModalRemarks" type="text" placeholder="Remarks" />
+          </div>
+          <div class="employee-actions">
+            <button class="btn-outline" type="submit" id="salaryRuleModalSubmit">Save Rule</button>
+          </div>
+          <p class="form-hint" id="salaryRuleModalNotice"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="profileModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="profile-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Profile</p>
+          <h3 id="profileModalTitle">Edit Profile</h3>
+        </div>
+        <button class="btn-outline btn-small" type="button" id="profileModalClose">Close</button>
+      </div>
+      <div class="modal-body">
+        <form class="employee-form" id="profileModalForm">
+          <div class="field profile-photo-field">
+            <label>Profile photo</label>
+            <div class="profile-photo-preview">
+              <img id="profilePhotoPreview" alt="Profile photo preview" class="is-empty" />
+              <span class="photo-placeholder">No photo</span>
+            </div>
+            <label class="upload-photo-btn">
+              <span>Upload Profile photo</span>
+              <input type="file" id="profilePhotoInput" accept="image/*" />
+            </label>
+          </div>
+          <div class="field">
+            <label for="profileName">Name</label>
+            <input id="profileName" name="profileName" type="text" placeholder="Full name" required />
+          </div>
+          <div class="field">
+            <label for="profilePhone">Phone number</label>
+            <input id="profilePhone" name="profilePhone" type="tel" placeholder="+880 155 555 5555" required />
+          </div>
+          <div class="field">
+            <label for="profileEmployeeCode">Employee code</label>
+            <input id="profileEmployeeCode" name="profileEmployeeCode" type="text" placeholder="Optional" />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <div class="static-field" id="profileEmail"></div>
+          </div>
+          <p class="form-hint" id="profileModalNotice"></p>
+          <div class="modal-actions">
+            <button class="primary" type="submit" id="profileModalSubmit">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/unicode2ascii.umd.js"></script>
+  <script src="welcome.js"></script>
+</body>
+</html>

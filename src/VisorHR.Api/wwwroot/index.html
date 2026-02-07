@@ -1,0 +1,160 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisorHR Login</title>
+  <link rel="icon" href="visorhr_logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+
+    <main class="shell">
+      <section class="brand">
+        <div class="logo">
+          <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Visor HR">
+            <style>
+              .mark {
+                transform-origin: 32px 32px;
+                transition: transform 0.3s ease;
+              }
+              .wave {
+                animation: waveFloat 3s ease-in-out infinite;
+              }
+              .mark {
+                animation: markTilt 4s ease-in-out infinite;
+              }
+              @keyframes waveFloat {
+                0% { transform: translate(0, 0); }
+                25% { transform: translate(1px, -1px); }
+                50% { transform: translate(0, 0); }
+                75% { transform: translate(-1px, 1px); }
+                100% { transform: translate(0, 0); }
+              }
+              @keyframes markTilt {
+                0% { transform: rotate(0deg); }
+                50% { transform: rotate(7deg); }
+                100% { transform: rotate(0deg); }
+              }
+            </style>
+            <g class="mark" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M56 32c0 13.255-10.745 24-24 24S8 45.255 8 32 18.745 8 32 8"/>
+              <path class="wave" d="M56 8s-14 0-24 16S8 32 8 32"/>
+            </g>
+          </svg>
+          <span>VisorHR</span>
+        </div>
+        <h1>Welcome back.</h1>
+        <p class="lead">
+          AI-powered insights to manage teams, payroll, and performance with a view that keeps the details sharp.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="company_logo" aria-label="Company logo placeholder">
+          <span>Company Logo</span>
+        </div>
+        <div class="card-panel is-active" id="signin-panel">
+          <div class="card-header">
+            <h2>Sign in</h2>
+          </div>
+
+          <form class="form" autocomplete="on">
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="username" placeholder="you@company.com" required />
+          </label>
+
+            <label class="field photo-field">
+              <span>Password</span>
+              <div class="password-wrap">
+                <input type="password" name="password" placeholder="Enter your password" required />
+                <button class="ghost" type="button" data-password-toggle>Show</button>
+              </div>
+            </label>
+
+          <div class="row">
+            <a class="link" href="#">Forgot password?</a>
+          </div>
+
+          <button class="primary" type="submit">
+            Sign in
+          </button>
+
+          <div class="alt">
+            <span>New here?</span>
+            <button class="link" type="button" data-auth-toggle="register">Create account</button>
+          </div>
+
+          <div class="notice" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="card-panel" id="register-panel" aria-hidden="true">
+          <div class="card-header">
+            <h3>Create account</h3>
+          </div>
+
+          <form class="form" data-register-form autocomplete="on">
+            <label class="field">
+              <span>Profile photo</span>
+              <div class="register-photo-preview">
+                <img id="registerProfilePhotoPreview" alt="Profile photo preview" class="is-empty" />
+                <span class="photo-placeholder">No photo</span>
+              </div>
+              <label class="upload-photo-btn">
+                <span>Upload Profile photo</span>
+                <input type="file" name="registerProfilePhoto" accept="image/*" />
+              </label>
+            </label>
+
+            <label class="field">
+              <span>Name</span>
+              <input type="text" name="registerName" placeholder="Your full name" required />
+            </label>
+
+            <label class="field">
+              <span>Phone number</span>
+              <input type="tel" name="registerPhone" placeholder="+880 155 555 5555" required />
+            </label>
+
+            <label class="field">
+              <span>Employee code</span>
+              <input type="text" name="registerEmployeeCode" placeholder="Optional" />
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="registerEmail" placeholder="you@company.com" required />
+            </label>
+
+          <label class="field">
+            <span>Password</span>
+            <div class="password-wrap">
+              <input type="password" name="registerPassword" placeholder="Create a password" required />
+              <button class="ghost" type="button" data-password-toggle>Show</button>
+            </div>
+          </label>
+
+          <button class="primary" type="submit">
+            Create account
+          </button>
+
+          <div class="alt">
+            <span>Already have account?</span>
+            <button class="link" type="button" data-auth-toggle="signin">Sign in</button>
+          </div>
+
+          <div class="notice" data-register-notice role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
