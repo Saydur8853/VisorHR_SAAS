@@ -193,6 +193,7 @@ if (registerForm) {
           registerNotice.textContent = "Account created. You can sign in now.";
           button.textContent = "Account created";
           registerForm.reset();
+          setAuthPanel("signin-panel");
           return;
         }
 
