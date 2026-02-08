@@ -12,3 +12,4 @@ D:\VisorHR-SaaS\obj\Debug\net8.0\refint\VisorHR.Runner.dll
 D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.pdb
 D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.genruntimeconfig.cache
 D:\VisorHR-SaaS\obj\Debug\net8.0\ref\VisorHR.Runner.dll
+D:\VisorHR-SaaS\obj\Debug\net8.0\VisorHR.Runner.sourcelink.json

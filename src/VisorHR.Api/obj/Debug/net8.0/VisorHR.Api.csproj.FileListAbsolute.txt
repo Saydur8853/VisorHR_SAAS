@@ -121,3 +121,4 @@ D:\VisorHR-SaaS\src\VisorHR.Api\obj\Debug\net8.0\VisorHR.Api.pdb
 D:\VisorHR-SaaS\src\VisorHR.Api\obj\Debug\net8.0\VisorHR.Api.genruntimeconfig.cache
 D:\VisorHR-SaaS\src\VisorHR.Api\obj\Debug\net8.0\ref\VisorHR.Api.dll
 D:\VisorHR-SaaS\src\VisorHR.Api\bin\Debug\net8.0\VisorHR.Api.staticwebassets.runtime.json
+D:\VisorHR-SaaS\src\VisorHR.Api\obj\Debug\net8.0\VisorHR.Api.sourcelink.json
