@@ -40,6 +40,15 @@ const maternityCount = document.getElementById("maternityCount");
 const releaseLabel = document.getElementById("releaseLabel");
 const resignLabel = document.getElementById("resignLabel");
 const sectionLabel = document.getElementById("sectionLabel");
+const totalDepartment = document.getElementById("totalDepartment");
+const totalSection = document.getElementById("totalSection");
+const totalUnit = document.getElementById("totalUnit");
+const totalFloor = document.getElementById("totalFloor");
+const totalDesignations = document.getElementById("totalDesignations");
+const totalContractualHolder = document.getElementById("totalContractualHolder");
+const totalNonContractualHolder = document.getElementById("totalNonContractualHolder");
+const bloodGroupSummary = document.getElementById("bloodGroupSummary");
+const totalShift = document.getElementById("totalShift");
 const menuItems = Array.from(document.querySelectorAll(".menu-item[data-view]"));
 const views = Array.from(document.querySelectorAll(".view[data-view]"));
 const inviteMenu = document.getElementById("inviteMenu");
@@ -152,10 +161,24 @@ const attendanceShift = document.getElementById("attendanceShift");
 const attendanceTable = document.getElementById("attendanceTable");
 const inviteForm = document.getElementById("inviteForm");
 const inviteNotice = document.getElementById("inviteNotice");
+const companyInfoForm = document.getElementById("companyInfoForm");
+const companyInfoNotice = document.getElementById("companyInfoNotice");
+const companyInfoId = document.getElementById("companyInfoId");
+const companyInfoReset = document.getElementById("companyInfoReset");
+const companyInfoRefresh = document.getElementById("companyInfoRefresh");
+const companyInfoSearch = document.getElementById("companyInfoSearch");
+const companyInfoTable = document.getElementById("companyInfoTable");
+const companyInfoSubmit = document.getElementById("companyInfoSubmit");
+const companyLogoInput = document.getElementById("companyLogoInput");
+const companyLogoPreview = document.getElementById("companyLogoPreview");
+const companyLogoCorner = document.getElementById("companyLogoCorner");
 
 const EMPLOYEE_STORAGE_KEY = "visorhr.employees";
 const ACTIVE_VIEW_KEY = "visorhr.activeView";
 const AUTH_STORAGE_KEY = "visorhr.auth";
+const COMPANY_LOGO_STORAGE_KEY = "visorhr.companyLogo";
+let companyInfos = [];
+let companyLogoDataUrl = null;
 
 if (!localStorage.getItem(AUTH_STORAGE_KEY)) {
   localStorage.removeItem(TOKEN_STORAGE_KEY);
@@ -483,6 +506,13 @@ const updateHeaderForView = (viewId) => {
     }
     return;
   }
+  if (viewId === "company-info") {
+    title.textContent = "Company Info";
+    if (sectionLabel) {
+      sectionLabel.textContent = "Settings";
+    }
+    return;
+  }
   if (viewId === "invite") {
     title.textContent = "Invite Users";
     if (sectionLabel) {
@@ -615,6 +645,304 @@ if (inviteForm) {
     }
   });
 }
+
+const setCompanyInfoNotice = (message) => {
+  if (!companyInfoNotice) {
+    return;
+  }
+  companyInfoNotice.textContent = message || "";
+};
+
+const setCompanyLogoPreview = (url) => {
+  if (!companyLogoPreview) {
+    return;
+  }
+  if (url) {
+    companyLogoPreview.src = url;
+    companyLogoPreview.classList.remove("is-empty");
+    return;
+  }
+  companyLogoPreview.src = "";
+  companyLogoPreview.classList.add("is-empty");
+};
+
+const setCompanyCornerLogo = (url) => {
+  if (!companyLogoCorner) {
+    return;
+  }
+  if (url) {
+    companyLogoCorner.src = url;
+    companyLogoCorner.classList.remove("is-empty");
+    return;
+  }
+  companyLogoCorner.src = "";
+  companyLogoCorner.classList.add("is-empty");
+};
+
+const setCompanyInfoMode = (mode) => {
+  if (!companyInfoForm) {
+    return;
+  }
+  companyInfoForm.dataset.mode = mode;
+  if (companyInfoSubmit) {
+    companyInfoSubmit.textContent = mode === "edit" ? "Update Company" : "Save Company";
+  }
+};
+
+const resetCompanyInfoForm = () => {
+  if (!companyInfoForm) {
+    return;
+  }
+  companyInfoForm.reset();
+  if (companyInfoId) {
+    companyInfoId.value = "";
+  }
+  companyLogoDataUrl = null;
+  setCompanyLogoPreview(null);
+  setCompanyInfoNotice("");
+  setCompanyInfoMode("create");
+};
+
+const fillCompanyInfoForm = (item) => {
+  if (!companyInfoForm || !item) {
+    return;
+  }
+  companyInfoForm.companyName.value = item.companyName ?? "";
+  companyInfoForm.companyShortName.value = item.shortName ?? "";
+  companyInfoForm.companyNameBang.value = item.companyNameBang ?? "";
+  companyInfoForm.companyAddress.value = item.address ?? "";
+  companyInfoForm.companyAddressBang.value = item.addressBang ?? "";
+  companyInfoForm.companyEmail.value = item.companyEmail ?? "";
+  companyInfoForm.companyPhone.value = item.companyPhone ?? "";
+  companyInfoForm.companyRemarks.value = item.remarks ?? "";
+  if (companyInfoId) {
+    companyInfoId.value = item.companyId ?? "";
+  }
+  companyLogoDataUrl = item.companyLogo ?? null;
+  setCompanyLogoPreview(companyLogoDataUrl);
+  setCompanyCornerLogo(companyLogoDataUrl);
+  setCompanyInfoMode("edit");
+};
+
+const getCompanyInfoFormData = () => {
+  if (!companyInfoForm) {
+    return null;
+  }
+  return {
+    companyName: companyInfoForm.companyName.value.trim(),
+    shortName: companyInfoForm.companyShortName.value.trim() || null,
+    companyNameBang: companyInfoForm.companyNameBang.value.trim() || null,
+    address: companyInfoForm.companyAddress.value.trim() || null,
+    addressBang: companyInfoForm.companyAddressBang.value.trim() || null,
+    companyEmail: companyInfoForm.companyEmail.value.trim() || null,
+    companyPhone: companyInfoForm.companyPhone.value.trim() || null,
+    companyLogo: companyLogoDataUrl,
+    remarks: companyInfoForm.companyRemarks.value.trim() || null
+  };
+};
+
+const renderCompanyInfoTable = (items) => {
+  if (!companyInfoTable) {
+    return;
+  }
+  const tbody = companyInfoTable.querySelector("tbody");
+  if (!tbody) {
+    return;
+  }
+  tbody.innerHTML = "";
+  if (!items.length) {
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = 6;
+    cell.textContent = "No company info found.";
+    row.appendChild(cell);
+    tbody.appendChild(row);
+    return;
+  }
+  items.forEach((item) => {
+    const row = document.createElement("tr");
+    row.dataset.id = item.companyId;
+    row.innerHTML = `
+      <td>${item.companyId ?? ""}</td>
+      <td>${item.companyName ?? ""}</td>
+      <td>${item.shortName ?? ""}</td>
+      <td>${item.companyEmail ?? ""}</td>
+      <td>${item.companyPhone ?? ""}</td>
+      <td class="table-actions">
+        <button class="btn-outline btn-small" type="button" data-action="edit">Edit</button>
+        <button class="btn-danger btn-small" type="button" data-action="delete">Delete</button>
+      </td>
+    `;
+    row.addEventListener("click", (event) => {
+      const action = event.target?.dataset?.action;
+      if (action === "edit") {
+        fillCompanyInfoForm(item);
+        return;
+      }
+      if (action === "delete") {
+        deleteCompanyInfo(item.companyId);
+      }
+    });
+    tbody.appendChild(row);
+  });
+};
+
+const filterCompanyInfos = () => {
+  const query = (companyInfoSearch?.value || "").trim().toLowerCase();
+  const filtered = query
+    ? companyInfos.filter((item) =>
+        `${item.companyName ?? ""} ${item.shortName ?? ""}`.toLowerCase().includes(query)
+      )
+    : companyInfos;
+  renderCompanyInfoTable(filtered);
+};
+
+const loadCompanyInfos = async () => {
+  try {
+    const authToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+    if (!authToken) {
+      throw new Error("Session expired. Please sign in again.");
+    }
+    const response = await fetch("/company-info", {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data?.items) {
+      throw new Error(data?.message || "Failed to load company info.");
+    }
+    companyInfos = data.items;
+    filterCompanyInfos();
+    const latestLogo = companyInfos[0]?.companyLogo ?? null;
+    setCompanyCornerLogo(latestLogo);
+    if (latestLogo) {
+      localStorage.setItem(COMPANY_LOGO_STORAGE_KEY, latestLogo);
+    } else {
+      localStorage.removeItem(COMPANY_LOGO_STORAGE_KEY);
+    }
+  } catch (error) {
+    setCompanyInfoNotice(error?.message || "Failed to load company info.");
+  }
+};
+
+const deleteCompanyInfo = async (companyId) => {
+  if (!companyId) {
+    return;
+  }
+  try {
+    const authToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+    if (!authToken) {
+      throw new Error("Session expired. Please sign in again.");
+    }
+    const response = await fetch(`/company-info/${encodeURIComponent(companyId)}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data?.ok) {
+      throw new Error(data?.message || "Failed to delete company info.");
+    }
+    setCompanyInfoNotice("Company info deleted.");
+    await loadCompanyInfos();
+    if (!companyInfos.length) {
+      setCompanyCornerLogo(null);
+    }
+  } catch (error) {
+    setCompanyInfoNotice(error?.message || "Failed to delete company info.");
+  }
+};
+
+if (companyLogoInput) {
+  companyLogoInput.addEventListener("change", () => {
+    const file = companyLogoInput.files?.[0];
+    if (!file) {
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        companyLogoDataUrl = reader.result;
+        setCompanyLogoPreview(companyLogoDataUrl);
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+if (companyInfoReset) {
+  companyInfoReset.addEventListener("click", resetCompanyInfoForm);
+}
+
+if (companyInfoRefresh) {
+  companyInfoRefresh.addEventListener("click", loadCompanyInfos);
+}
+
+if (companyInfoSearch) {
+  companyInfoSearch.addEventListener("input", filterCompanyInfos);
+}
+
+if (companyInfoForm) {
+  companyInfoForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const payload = getCompanyInfoFormData();
+    if (!payload || !payload.companyName) {
+      setCompanyInfoNotice("Company name is required.");
+      return;
+    }
+    if (companyInfoSubmit) {
+      companyInfoSubmit.disabled = true;
+      companyInfoSubmit.textContent = "Saving...";
+    }
+    try {
+      const authToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+      if (!authToken) {
+        throw new Error("Session expired. Please sign in again.");
+      }
+      const mode = companyInfoForm.dataset.mode || "create";
+      const currentId = companyInfoId?.value || "";
+      const response = await fetch(
+        mode === "edit" && currentId
+          ? `/company-info/${encodeURIComponent(currentId)}`
+          : "/company-info",
+        {
+          method: mode === "edit" && currentId ? "PUT" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`
+          },
+          body: JSON.stringify(payload)
+        }
+      );
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data?.ok) {
+        throw new Error(data?.message || "Failed to save company info.");
+      }
+      setCompanyInfoNotice(mode === "edit" ? "Company info updated." : "Company info created.");
+      const savedLogo = data?.item?.companyLogo ?? companyLogoDataUrl;
+      setCompanyCornerLogo(savedLogo);
+      if (savedLogo) {
+        localStorage.setItem(COMPANY_LOGO_STORAGE_KEY, savedLogo);
+      } else {
+        localStorage.removeItem(COMPANY_LOGO_STORAGE_KEY);
+      }
+      resetCompanyInfoForm();
+      await loadCompanyInfos();
+    } catch (error) {
+      setCompanyInfoNotice(error?.message || "Failed to save company info.");
+    } finally {
+      if (companyInfoSubmit) {
+        companyInfoSubmit.disabled = false;
+        companyInfoSubmit.textContent = companyInfoForm.dataset.mode === "edit" ? "Update Company" : "Save Company";
+      }
+    }
+  });
+}
+
+(() => {
+  if (companyInfoForm) {
+    setCompanyInfoMode("create");
+  }
+  loadCompanyInfos();
+})();
 
 const getStoredEmployees = () => {
   const stored = localStorage.getItem(EMPLOYEE_STORAGE_KEY);
@@ -3116,283 +3444,82 @@ if (logoutLink) {
   });
 }
 
-const loadTotalEmployees = () => {
-  if (!unit || !totalEmployees) {
+const setText = (element, value) => {
+  if (!element) {
     return;
   }
-
-  fetch(`/overview/total-employees?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load total employees.");
-      }
-      totalEmployees.textContent = data.totalEmp ?? "--";
-    })
-    .catch(() => {
-      totalEmployees.textContent = "--";
-    });
+  element.textContent = value ?? "--";
 };
 
-loadTotalEmployees();
-
-const loadActiveEmployees = () => {
-  if (!unit || !activeEmployees) {
-    return;
+const loadDashboard = async () => {
+  try {
+    const authToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+    if (!authToken) {
+      throw new Error("Session expired. Please sign in again.");
+    }
+    const response = await fetch("/dashboard/latest", {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data?.message || "Failed to load dashboard.");
+    }
+    const item = data?.item || {};
+    setText(totalEmployees, item.totalEmployees);
+    setText(activeEmployees, item.activeEmployees);
+    setText(inactiveEmployees, item.inactiveEmployees);
+    setText(newJoinersValue, item.newJoiners);
+    setText(closeEmployees, item.totalClose);
+    setText(releaseEmployees, item.release);
+    setText(resignEmployees, item.resign);
+    setText(totalWorker, item.totalWorker);
+    setText(totalStaff, item.totalStaff);
+    setText(totalOfficer, item.totalOfficer);
+    setText(totalMale, item.totalMale);
+    setText(totalFemale, item.totalFemale);
+    setText(cashPay, item.cashPayEmp);
+    setText(bankPay, item.bankPayEmp);
+    setText(mobilePay, item.mobilePayEmp);
+    setText(taxHolder, item.taxHolder);
+    setText(quarterHolder, item.quarterHolder);
+    setText(incrementValue, item.increment);
+    setText(leaveValue, item.leave);
+    setText(maternityCount, item.onMaternity);
+    setText(totalDepartment, item.totalDepartment);
+    setText(totalSection, item.totalSection);
+    setText(totalUnit, item.totalUnit);
+    setText(totalFloor, item.totalFloor);
+    setText(totalDesignations, item.totalDesignations);
+    setText(totalContractualHolder, item.totalContractualHolder);
+    setText(totalNonContractualHolder, item.totalNonContractualHolder);
+    if (bloodGroupSummary) {
+      const icon = `
+        <svg class="blood-icon" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g>
+            <path fill="#EA6453" d="M229.365,420c-71.069-0.005-129.101-57.827-129.364-128.896h40.002 c0.262,49.027,40.319,88.893,89.362,88.896H230V0c0,0-107.053,145.323-136.146,189.029 c-19.727,29.637-33.994,63.876-33.853,102.222C60.347,384.793,136.458,460.344,230,459.999V420H229.365z"></path>
+            <path fill="#FFFFFF" d="M229.365,380c-49.043-0.003-89.1-39.868-89.362-88.896h-40.002 c0.263,71.068,58.295,128.891,129.364,128.896h1.272v-40H229.365z"></path>
+            <path fill="#EF1F4B" d="M366.146,189.029C345.168,157.514,230,0,230,0v459.999c93.542,0.345,169.654-75.206,169.999-168.748 C400.14,252.905,385.873,218.666,366.146,189.029z"></path>
+          </g>
+        </svg>
+      `;
+      const parts = [
+        { label: "A+", value: item.bloodGroupAPlus ?? 0 },
+        { label: "A-", value: item.bloodGroupAMinus ?? 0 },
+        { label: "B+", value: item.bloodGroupBPlus ?? 0 },
+        { label: "B-", value: item.bloodGroupBMinus ?? 0 },
+        { label: "O+", value: item.bloodGroupOPlus ?? 0 },
+        { label: "O-", value: item.bloodGroupOMinus ?? 0 },
+        { label: "AB+", value: item.bloodGroupAbPlus ?? 0 },
+        { label: "AB-", value: item.bloodGroupAbMinus ?? 0 }
+      ];
+      bloodGroupSummary.innerHTML = parts
+        .map((group) => `<span class="blood-group-item">${icon}${group.label} ${group.value}</span>`)
+        .join("");
+    }
+    setText(totalShift, item.totalShift);
+  } catch (error) {
+    console.error(error?.message || "Failed to load dashboard.");
   }
-
-  fetch(`/overview/active-employees?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load active employees.");
-      }
-      activeEmployees.textContent = data.activeEmp ?? "--";
-    })
-    .catch(() => {
-      activeEmployees.textContent = "--";
-    });
 };
 
-loadActiveEmployees();
-
-const loadInactiveEmployees = () => {
-  if (!unit || !inactiveEmployees) {
-    return;
-  }
-
-  fetch(`/overview/inactive-employees?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load inactive employees.");
-      }
-      inactiveEmployees.textContent = data.inactiveEmp ?? "--";
-    })
-    .catch(() => {
-      inactiveEmployees.textContent = "--";
-    });
-};
-
-loadInactiveEmployees();
-
-const loadNewJoiners = () => {
-  if (!unit || !newJoinersValue) {
-    return;
-  }
-
-  fetch(`/overview/new-joiners?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load new joiners.");
-      }
-      if (newJoinersLabel) {
-        newJoinersLabel.textContent = `New Joiners (This ${data.label})`;
-      }
-      newJoinersValue.textContent = data.newJoiners ?? "--";
-    })
-    .catch(() => {
-      if (newJoinersLabel) {
-        newJoinersLabel.textContent = "New Joiners";
-      }
-      newJoinersValue.textContent = "--";
-    });
-};
-
-loadNewJoiners();
-
-const loadCloseEmployees = () => {
-  if (!unit || !closeEmployees) {
-    return;
-  }
-
-  fetch(`/overview/close-employees?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load close employees.");
-      }
-      closeEmployees.textContent = data.closeEmp ?? "--";
-    })
-    .catch(() => {
-      closeEmployees.textContent = "--";
-    });
-};
-
-const loadReleaseResign = () => {
-  if (!unit) {
-    return;
-  }
-
-  fetch(`/overview/release-resign?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load release/resign.");
-      }
-      if (releaseLabel) {
-        releaseLabel.textContent = `Release (This ${data.label})`;
-      }
-      if (resignLabel) {
-        resignLabel.textContent = `Resign (This ${data.label})`;
-      }
-      if (releaseEmployees) {
-        releaseEmployees.textContent = data.releaseTotal ?? "--";
-      }
-      if (resignEmployees) {
-        resignEmployees.textContent = data.resignCount ?? "--";
-      }
-    })
-    .catch(() => {
-      if (releaseEmployees) releaseEmployees.textContent = "--";
-      if (resignEmployees) resignEmployees.textContent = "--";
-      if (releaseLabel) releaseLabel.textContent = "Release";
-      if (resignLabel) resignLabel.textContent = "Resign";
-    });
-};
-
-const loadWorkerStaffOfficer = () => {
-  if (!unit) {
-    return;
-  }
-
-  fetch(`/overview/worker-staff-officer?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load worker/staff/officer.");
-      }
-      if (totalWorker) totalWorker.textContent = data.totalWorker ?? "--";
-      if (totalStaff) totalStaff.textContent = data.totalStaff ?? "--";
-      if (totalOfficer) totalOfficer.textContent = data.totalOfficer ?? "--";
-    })
-    .catch(() => {
-      if (totalWorker) totalWorker.textContent = "--";
-      if (totalStaff) totalStaff.textContent = "--";
-      if (totalOfficer) totalOfficer.textContent = "--";
-    });
-};
-
-const loadGender = () => {
-  if (!unit) {
-    return;
-  }
-
-  fetch(`/overview/gender?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load gender.");
-      }
-      if (totalMale) totalMale.textContent = data.totalMale ?? "--";
-      if (totalFemale) totalFemale.textContent = data.totalFemale ?? "--";
-    })
-    .catch(() => {
-      if (totalMale) totalMale.textContent = "--";
-      if (totalFemale) totalFemale.textContent = "--";
-    });
-};
-
-const loadPayHolders = () => {
-  if (!unit) {
-    return;
-  }
-
-  fetch(`/overview/pay-holders?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load pay holders.");
-      }
-      if (cashPay) cashPay.textContent = data.cashPay ?? "--";
-      if (bankPay) bankPay.textContent = data.bankPay ?? "--";
-      if (mobilePay) mobilePay.textContent = data.mobilePay ?? "--";
-      if (taxHolder) taxHolder.textContent = data.taxHolder ?? "--";
-    })
-    .catch(() => {
-      if (cashPay) cashPay.textContent = "--";
-      if (bankPay) bankPay.textContent = "--";
-      if (mobilePay) mobilePay.textContent = "--";
-      if (taxHolder) taxHolder.textContent = "--";
-    });
-};
-
-const loadQuarterIncrement = () => {
-  if (!unit) {
-    return;
-  }
-
-  fetch(`/overview/quarter-increment?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load quarter/increment.");
-      }
-      if (quarterHolder) quarterHolder.textContent = data.quarterHolder ?? "--";
-      if (incrementLabel) {
-        incrementLabel.textContent = `Increment (This ${data.label})`;
-      }
-      if (incrementValue) incrementValue.textContent = data.increment ?? "--";
-    })
-    .catch(() => {
-      if (quarterHolder) quarterHolder.textContent = "--";
-      if (incrementLabel) incrementLabel.textContent = "Increment";
-      if (incrementValue) incrementValue.textContent = "--";
-    });
-};
-
-const loadOffDuty = () => {
-  if (!unit || !offDuty) {
-    return;
-  }
-
-  fetch(`/overview/off-duty?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load off duty.");
-      }
-      offDuty.textContent = data.offDuty ?? "--";
-    })
-    .catch(() => {
-      offDuty.textContent = "--";
-    });
-};
-
-const loadLeaveMaternity = () => {
-  if (!unit) {
-    return;
-  }
-
-  fetch(`/overview/leave-maternity?unit=${encodeURIComponent(unit)}`)
-    .then(async (response) => {
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to load leave/maternity.");
-      }
-      if (leaveLabel) {
-        leaveLabel.textContent = `Leave (This ${data.label})`;
-      }
-      if (leaveValue) {
-        leaveValue.textContent = `${data.leaveDays ?? 0}/${data.leaveEmp ?? 0}`;
-      }
-      if (maternityCount) {
-        maternityCount.textContent = data.maternity ?? "--";
-      }
-    })
-    .catch(() => {
-      if (leaveLabel) leaveLabel.textContent = "Leave";
-      if (leaveValue) leaveValue.textContent = "--";
-      if (maternityCount) maternityCount.textContent = "--";
-    });
-};
-
-loadCloseEmployees();
-loadReleaseResign();
-loadWorkerStaffOfficer();
-loadGender();
-loadPayHolders();
-loadQuarterIncrement();
-loadOffDuty();
-loadLeaveMaternity();
+loadDashboard();

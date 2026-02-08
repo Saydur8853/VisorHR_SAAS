@@ -158,26 +158,72 @@ body {
   display: grid;
   place-items: center;
   width: 100%;
-  min-height: 78px;
+  min-height: 64px;
   border-radius: 16px;
-  border: 2px dashed rgba(27, 31, 42, 0.25);
-  background: linear-gradient(135deg, rgba(27, 31, 42, 0.06), rgba(27, 31, 42, 0.02));
+  border: none;
+  background: transparent;
   color: var(--muted);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.72rem;
   margin-bottom: 18px;
+  gap: 6px;
 }
 
 .company_logo--corner {
   position: fixed;
   top: 20px;
   right: 24px;
-  width: 200px;
-  min-height: 64px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  background: transparent;
   margin-bottom: 0;
   z-index: 5;
+}
+
+.company_logo img {
+  max-width: 60%;
+  max-height: 60%;
+  object-fit: contain;
+  display: none;
+}
+
+.company_logo img:not(.is-empty) {
+  display: block;
+}
+
+.company_logo img:not(.is-empty) + span {
+  display: none;
+}
+
+.blood-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+
+.blood-group-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.blood-group-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(27, 31, 42, 0.06);
+  min-width: 72px;
+  justify-content: center;
 }
 
 .card-header h2 {
@@ -870,6 +916,24 @@ button.link {
   grid-column: 1 / -1;
 }
 
+.company-info-form {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(240px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.company-info-left,
+.company-info-right {
+  display: grid;
+  gap: 14px;
+}
+
+.company-info-right {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
 .identity-grid {
   grid-column: 1 / -1;
   display: grid;
@@ -1400,6 +1464,13 @@ body.modal-open {
   border-radius: 999px;
 }
 
+.company-logo-preview img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  border-radius: 0;
+}
+
 .profile-photo-preview img.is-empty {
   display: none;
 }
@@ -1675,5 +1746,9 @@ body.modal-open {
 
   .eyebrow {
     margin-bottom: 6px;
+  }
+
+  .company-info-form {
+    grid-template-columns: 1fr;
   }
 }

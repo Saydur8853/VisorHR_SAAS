@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VisorHR.Api.Data;
 
@@ -11,9 +12,11 @@ using VisorHR.Api.Data;
 namespace VisorHR.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260208110037_AddDashboard")]
+    partial class AddDashboard
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -322,38 +325,6 @@ namespace VisorHR.Api.Migrations
                         .HasColumnType("int")
                         .HasColumnName("bank_pay_emp");
 
-                    b.Property<int?>("BloodGroupAMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_a_minus");
-
-                    b.Property<int?>("BloodGroupAPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_a_plus");
-
-                    b.Property<int?>("BloodGroupAbMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_ab_minus");
-
-                    b.Property<int?>("BloodGroupAbPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_ab_plus");
-
-                    b.Property<int?>("BloodGroupBMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_b_minus");
-
-                    b.Property<int?>("BloodGroupBPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_b_plus");
-
-                    b.Property<int?>("BloodGroupOMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_o_minus");
-
-                    b.Property<int?>("BloodGroupOPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_o_plus");
-
                     b.Property<int?>("CashPayEmp")
                         .HasColumnType("int")
                         .HasColumnName("cash_pay_emp");
@@ -366,8 +337,9 @@ namespace VisorHR.Api.Migrations
                         .HasColumnType("int")
                         .HasColumnName("increment");
 
-                    b.Property<int?>("Leave")
-                        .HasColumnType("int")
+                    b.Property<string>("Leave")
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
                         .HasColumnName("leave");
 
                     b.Property<int?>("MobilePayEmp")
@@ -402,18 +374,6 @@ namespace VisorHR.Api.Migrations
                         .HasColumnType("int")
                         .HasColumnName("total_close");
 
-                    b.Property<int?>("TotalContractualHolder")
-                        .HasColumnType("int")
-                        .HasColumnName("total_contractual_holder");
-
-                    b.Property<int?>("TotalDepartment")
-                        .HasColumnType("int")
-                        .HasColumnName("total_department");
-
-                    b.Property<int?>("TotalDesignations")
-                        .HasColumnType("int")
-                        .HasColumnName("total_designations");
-
                     b.Property<int?>("TotalEmployees")
                         .HasColumnType("int")
                         .HasColumnName("total_employees");
@@ -422,37 +382,17 @@ namespace VisorHR.Api.Migrations
                         .HasColumnType("int")
                         .HasColumnName("total_female");
 
-                    b.Property<int?>("TotalFloor")
-                        .HasColumnType("int")
-                        .HasColumnName("total_floor");
-
                     b.Property<int?>("TotalMale")
                         .HasColumnType("int")
                         .HasColumnName("total_male");
-
-                    b.Property<int?>("TotalNonContractualHolder")
-                        .HasColumnType("int")
-                        .HasColumnName("total_non_contractual_holder");
 
                     b.Property<int?>("TotalOfficer")
                         .HasColumnType("int")
                         .HasColumnName("total_officer");
 
-                    b.Property<int?>("TotalSection")
-                        .HasColumnType("int")
-                        .HasColumnName("total_section");
-
-                    b.Property<int?>("TotalShift")
-                        .HasColumnType("int")
-                        .HasColumnName("total_shift");
-
                     b.Property<int?>("TotalStaff")
                         .HasColumnType("int")
                         .HasColumnName("total_staff");
-
-                    b.Property<int?>("TotalUnit")
-                        .HasColumnType("int")
-                        .HasColumnName("total_unit");
 
                     b.Property<int?>("TotalWorker")
                         .HasColumnType("int")

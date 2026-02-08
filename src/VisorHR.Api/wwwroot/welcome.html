@@ -12,6 +12,7 @@
     <div class="glow glow-a"></div>
     <div class="glow glow-b"></div>
     <div class="company_logo company_logo--corner" aria-label="Company logo placeholder">
+      <img id="companyLogoCorner" alt="Company logo" class="is-empty" />
       <span>Company Logo</span>
     </div>
 
@@ -65,7 +66,7 @@
           <a class="menu-item" href="#">Leave Requests</a>
           <a class="menu-item" href="#">Compliance</a>
           <a class="menu-item" id="inviteMenu" href="#" data-view="invite" hidden>Invite Users</a>
-          <a class="menu-item" href="#">Settings</a>
+          <a class="menu-item" href="#" data-view="company-info">Company Info</a>
         </nav>
         <div class="side-footer">
           <div class="user-card">
@@ -200,6 +201,42 @@
               <div class="overview-card">
                 <span>On Maternity</span>
                 <strong id="maternityCount">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Department</span>
+                <strong id="totalDepartment">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Section</span>
+                <strong id="totalSection">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Unit</span>
+                <strong id="totalUnit">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Floor</span>
+                <strong id="totalFloor">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Designations</span>
+                <strong id="totalDesignations">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Contractual Holder</span>
+                <strong id="totalContractualHolder">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Non Contractual Holder</span>
+                <strong id="totalNonContractualHolder">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Total Shift</span>
+                <strong id="totalShift">--</strong>
+              </div>
+              <div class="overview-card">
+                <span>Blood Groups</span>
+                <div class="blood-group-row" id="bloodGroupSummary">--</div>
               </div>
               </div>
             </section>
@@ -665,6 +702,109 @@
                     <button class="primary" type="submit">Send invitation</button>
                     <div class="notice" id="inviteNotice" role="status" aria-live="polite"></div>
                   </form>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="view" data-view="company-info">
+            <section class="employee-shell" aria-label="Company info">
+              <div class="employee-grid is-stack">
+                <div class="employee-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Settings</p>
+                      <h3>Company Info</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="companyInfoReset">Reset</button>
+                    </div>
+                  </div>
+                  <p class="form-hint" id="companyInfoNotice"></p>
+                  <form class="employee-form" id="companyInfoForm" autocomplete="on">
+                    <input type="hidden" id="companyInfoId" value="" />
+                    <div class="company-info-form">
+                      <div class="company-info-left">
+                        <div class="field">
+                          <label>Company Logo</label>
+                          <div class="profile-photo-preview company-logo-preview">
+                            <img id="companyLogoPreview" alt="Company logo preview" class="is-empty" />
+                            <span class="photo-placeholder">No logo</span>
+                          </div>
+                          <label class="upload-photo-btn">
+                            <span>Upload Company logo</span>
+                            <input type="file" id="companyLogoInput" accept="image/*" />
+                          </label>
+                        </div>
+                      </div>
+                      <div class="company-info-right">
+                        <div class="field">
+                          <label for="companyName">Company Name</label>
+                          <input id="companyName" name="companyName" type="text" placeholder="Company name" required />
+                        </div>
+                        <div class="field">
+                          <label for="companyShortName">Short Name</label>
+                          <input id="companyShortName" name="companyShortName" type="text" placeholder="Short name" />
+                        </div>
+                        <div class="field">
+                          <label for="companyNameBang">Company Name (Bangla)</label>
+                          <input id="companyNameBang" name="companyNameBang" type="text" placeholder="বাংলা নাম" />
+                        </div>
+                        <div class="field">
+                          <label for="companyAddress">Address</label>
+                          <input id="companyAddress" name="companyAddress" type="text" placeholder="Address" />
+                        </div>
+                        <div class="field">
+                          <label for="companyAddressBang">Address (Bangla)</label>
+                          <input id="companyAddressBang" name="companyAddressBang" type="text" placeholder="ঠিকানা" />
+                        </div>
+                        <div class="field">
+                          <label for="companyEmail">Company Email</label>
+                          <input id="companyEmail" name="companyEmail" type="email" placeholder="info@company.com" />
+                        </div>
+                        <div class="field">
+                          <label for="companyPhone">Company Phone</label>
+                          <input id="companyPhone" name="companyPhone" type="text" placeholder="+880 155 555 5555" />
+                        </div>
+                        <div class="field">
+                          <label for="companyRemarks">Remarks</label>
+                          <input id="companyRemarks" name="companyRemarks" type="text" placeholder="Remarks" />
+                        </div>
+                        <div class="employee-actions">
+                          <button class="primary" type="submit" id="companyInfoSubmit">Save Company</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="employee-card">
+                  <div class="employee-card-header">
+                    <div>
+                      <p class="eyebrow">Directory</p>
+                      <h3>Company Info List</h3>
+                    </div>
+                    <div class="employee-actions">
+                      <button class="btn-outline" type="button" id="companyInfoRefresh">Refresh</button>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="companyInfoSearch">Search</label>
+                    <input id="companyInfoSearch" name="companyInfoSearch" type="text" placeholder="Search company" />
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table" id="companyInfoTable">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Company</th>
+                          <th>Short</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </section>

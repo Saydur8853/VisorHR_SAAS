@@ -13,6 +13,8 @@ const registerPhoneInput = registerForm?.querySelector("input[name='registerPhon
 const registerEmployeeCodeInput = registerForm?.querySelector("input[name='registerEmployeeCode']");
 const registerProfilePhotoInput = registerForm?.querySelector("input[name='registerProfilePhoto']");
 const registerProfilePhotoPreview = document.querySelector("#registerProfilePhotoPreview");
+const companyLogoLogin = document.getElementById("companyLogoLogin");
+const COMPANY_LOGO_STORAGE_KEY = "visorhr.companyLogo";
 const registerEmailInput = registerForm?.querySelector("input[name='registerEmail']");
 const registerPasswordInput = registerForm?.querySelector("input[name='registerPassword']");
 const tabPanels = Array.from(document.querySelectorAll(".card-panel"));
@@ -54,6 +56,34 @@ if (authToggles.length > 0) {
     });
   });
 }
+
+const setLoginLogo = (url) => {
+  if (!companyLogoLogin) {
+    return;
+  }
+  if (url) {
+    companyLogoLogin.src = url;
+    companyLogoLogin.classList.remove("is-empty");
+    return;
+  }
+  companyLogoLogin.src = "";
+  companyLogoLogin.classList.add("is-empty");
+};
+
+const cachedLogo = localStorage.getItem(COMPANY_LOGO_STORAGE_KEY);
+if (cachedLogo) {
+  setLoginLogo(cachedLogo);
+}
+
+fetch("/company-info/public")
+  .then(async (response) => {
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data?.message || "Failed to load company logo.");
+    }
+    setLoginLogo(data?.item?.companyLogo ?? null);
+  })
+  .catch(() => {});
 
 if (form) {
   form.addEventListener("submit", (event) => {

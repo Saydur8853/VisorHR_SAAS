@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VisorHR.Api.Data;
 
@@ -11,9 +12,11 @@ using VisorHR.Api.Data;
 namespace VisorHR.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260208061921_AddCompanyInfo")]
+    partial class AddCompanyInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -273,8 +276,10 @@ namespace VisorHR.Api.Migrations
                         .HasColumnName("company_phone");
 
                     b.Property<DateTime?>("CreatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("created_at");
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("CreatedBy")
                         .HasMaxLength(150)
@@ -292,8 +297,10 @@ namespace VisorHR.Api.Migrations
                         .HasColumnName("short_name");
 
                     b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("updated_at");
+                        .HasColumnName("updated_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
 
                     b.Property<string>("UpdatedBy")
                         .HasMaxLength(150)
@@ -303,164 +310,6 @@ namespace VisorHR.Api.Migrations
                     b.HasKey("CompanyId");
 
                     b.ToTable("company_info", (string)null);
-                });
-
-            modelBuilder.Entity("VisorHR.Api.Models.Dashboard", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<int?>("ActiveEmployees")
-                        .HasColumnType("int")
-                        .HasColumnName("active_employees");
-
-                    b.Property<int?>("BankPayEmp")
-                        .HasColumnType("int")
-                        .HasColumnName("bank_pay_emp");
-
-                    b.Property<int?>("BloodGroupAMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_a_minus");
-
-                    b.Property<int?>("BloodGroupAPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_a_plus");
-
-                    b.Property<int?>("BloodGroupAbMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_ab_minus");
-
-                    b.Property<int?>("BloodGroupAbPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_ab_plus");
-
-                    b.Property<int?>("BloodGroupBMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_b_minus");
-
-                    b.Property<int?>("BloodGroupBPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_b_plus");
-
-                    b.Property<int?>("BloodGroupOMinus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_o_minus");
-
-                    b.Property<int?>("BloodGroupOPlus")
-                        .HasColumnType("int")
-                        .HasColumnName("blood_group_o_plus");
-
-                    b.Property<int?>("CashPayEmp")
-                        .HasColumnType("int")
-                        .HasColumnName("cash_pay_emp");
-
-                    b.Property<int?>("InactiveEmployees")
-                        .HasColumnType("int")
-                        .HasColumnName("inactive_employees");
-
-                    b.Property<int?>("Increment")
-                        .HasColumnType("int")
-                        .HasColumnName("increment");
-
-                    b.Property<int?>("Leave")
-                        .HasColumnType("int")
-                        .HasColumnName("leave");
-
-                    b.Property<int?>("MobilePayEmp")
-                        .HasColumnType("int")
-                        .HasColumnName("mobile_pay_emp");
-
-                    b.Property<int?>("NewJoiners")
-                        .HasColumnType("int")
-                        .HasColumnName("new_joiners");
-
-                    b.Property<int?>("OnMaternity")
-                        .HasColumnType("int")
-                        .HasColumnName("on_maternity");
-
-                    b.Property<int?>("QuarterHolder")
-                        .HasColumnType("int")
-                        .HasColumnName("quarter_holder");
-
-                    b.Property<int?>("Release")
-                        .HasColumnType("int")
-                        .HasColumnName("release");
-
-                    b.Property<int?>("Resign")
-                        .HasColumnType("int")
-                        .HasColumnName("resign");
-
-                    b.Property<int?>("TaxHolder")
-                        .HasColumnType("int")
-                        .HasColumnName("tax_holder");
-
-                    b.Property<int?>("TotalClose")
-                        .HasColumnType("int")
-                        .HasColumnName("total_close");
-
-                    b.Property<int?>("TotalContractualHolder")
-                        .HasColumnType("int")
-                        .HasColumnName("total_contractual_holder");
-
-                    b.Property<int?>("TotalDepartment")
-                        .HasColumnType("int")
-                        .HasColumnName("total_department");
-
-                    b.Property<int?>("TotalDesignations")
-                        .HasColumnType("int")
-                        .HasColumnName("total_designations");
-
-                    b.Property<int?>("TotalEmployees")
-                        .HasColumnType("int")
-                        .HasColumnName("total_employees");
-
-                    b.Property<int?>("TotalFemale")
-                        .HasColumnType("int")
-                        .HasColumnName("total_female");
-
-                    b.Property<int?>("TotalFloor")
-                        .HasColumnType("int")
-                        .HasColumnName("total_floor");
-
-                    b.Property<int?>("TotalMale")
-                        .HasColumnType("int")
-                        .HasColumnName("total_male");
-
-                    b.Property<int?>("TotalNonContractualHolder")
-                        .HasColumnType("int")
-                        .HasColumnName("total_non_contractual_holder");
-
-                    b.Property<int?>("TotalOfficer")
-                        .HasColumnType("int")
-                        .HasColumnName("total_officer");
-
-                    b.Property<int?>("TotalSection")
-                        .HasColumnType("int")
-                        .HasColumnName("total_section");
-
-                    b.Property<int?>("TotalShift")
-                        .HasColumnType("int")
-                        .HasColumnName("total_shift");
-
-                    b.Property<int?>("TotalStaff")
-                        .HasColumnType("int")
-                        .HasColumnName("total_staff");
-
-                    b.Property<int?>("TotalUnit")
-                        .HasColumnType("int")
-                        .HasColumnName("total_unit");
-
-                    b.Property<int?>("TotalWorker")
-                        .HasColumnType("int")
-                        .HasColumnName("total_worker");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("dashboard", (string)null);
                 });
 
             modelBuilder.Entity("VisorHR.Api.Models.Invitation", b =>
