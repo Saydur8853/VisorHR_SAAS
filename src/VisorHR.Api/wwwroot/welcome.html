@@ -54,19 +54,31 @@
         <nav class="menu">
           <a class="menu-item is-active" href="#" data-view="overview">Dashboard</a>
           <a class="menu-item" href="#" data-view="employees">Employees</a>
-          <a class="menu-item" href="#" data-view="employee-types">Employee Types</a>
-          <a class="menu-item" href="#" data-view="designations">Designations</a>
           <a class="menu-item" href="#" data-view="attendance">Attendance</a>
           <a class="menu-item" href="#">Payroll</a>
-          <a class="menu-item" href="#" data-view="salary-rules">Salary Rule</a>
           <a class="menu-item" href="#">Reports</a>
-          <a class="menu-item" href="#" data-view="departments">Departments</a>
-          <a class="menu-item" href="#" data-view="sections">Sections</a>
-          <a class="menu-item" href="#" data-view="shifts">Shift Planner</a>
+          <details class="menu-group" open>
+            <summary class="menu-item menu-group-toggle">Organization Setup</summary>
+            <div class="menu-submenu">
+              <a class="menu-item menu-subitem" href="#" data-view="company-info">Company</a>
+              <a class="menu-item menu-subitem" href="#">Unites</a>
+              <a class="menu-item menu-subitem" href="#">Dormitories</a>
+              <a class="menu-item menu-subitem" href="#">Transports</a>
+              <a class="menu-item menu-subitem" href="#" data-view="departments">Departments</a>
+              <a class="menu-item menu-subitem" href="#" data-view="sections">Sections</a>
+              <a class="menu-item menu-subitem" href="#">Lines</a>
+              <a class="menu-item menu-subitem" href="#">Holiday setup</a>
+              <a class="menu-item menu-subitem" href="#" data-view="employee-types">Emp categories</a>
+              <a class="menu-item menu-subitem" href="#" data-view="designations">Designations</a>
+              <a class="menu-item menu-subitem" href="#" data-view="salary-rules">Salary rules</a>
+              <a class="menu-item menu-subitem" href="#" data-view="shifts">Shift infos</a>
+              <a class="menu-item menu-subitem" href="#">Extra bills</a>
+              <a class="menu-item menu-subitem" href="#">Extra days</a>
+            </div>
+          </details>
           <a class="menu-item" href="#">Leave Requests</a>
           <a class="menu-item" href="#">Compliance</a>
           <a class="menu-item" id="inviteMenu" href="#" data-view="invite" hidden>Invite Users</a>
-          <a class="menu-item" href="#" data-view="company-info">Company Info</a>
         </nav>
         <div class="side-footer">
           <div class="user-card">
@@ -116,129 +128,296 @@
         </header>
         <div class="content-body">
           <div class="view is-active" data-view="overview">
-            <section class="header-box" aria-label="Unit summary">
-              <div class="overview-grid">
-              <div class="overview-card">
-                <span>Total Employees</span>
-                <strong id="totalEmployees">--</strong>
+            <section class="hr-dashboard">
+              <div class="section-title">
+                <div>
+                  <p class="eyebrow">HR Snapshot</p>
+                  <h3>People Overview</h3>
+                </div>
+                <span class="section-subtitle">Last updated today</span>
               </div>
-              <div class="overview-card">
-                <span>Active Employees</span>
-                <strong id="activeEmployees">--</strong>
+
+              <div class="kpi-grid">
+                <article class="kpi-card">
+                  <p>Total Employees</p>
+                  <h4 id="totalEmployees">350</h4>
+                  <span class="kpi-meta">All locations</span>
+                </article>
+                <article class="kpi-card">
+                  <p>Active Employees</p>
+                  <h4 id="activeEmployees">320</h4>
+                  <span class="kpi-meta">91.4% of total</span>
+                </article>
+                <article class="kpi-card">
+                  <p>Inactive Employees</p>
+                  <h4 id="inactiveEmployees">30</h4>
+                  <span class="kpi-meta">8.6% of total</span>
+                </article>
+                <article class="kpi-card">
+                  <p id="newJoinersLabel">New Joiners</p>
+                  <h4 id="newJoinersValue">15</h4>
+                  <span class="kpi-meta">This month</span>
+                </article>
+                <article class="kpi-card">
+                  <p id="resignLabel">Resignations</p>
+                  <h4 id="resignEmployees">3</h4>
+                  <span class="kpi-meta">Monthly exits</span>
+                </article>
               </div>
-              <div class="overview-card">
-                <span>Inactive Employees</span>
-                <strong id="inactiveEmployees">--</strong>
+
+              <div class="charts-grid">
+                <article class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <p class="eyebrow">Status</p>
+                      <h4>Active vs Inactive</h4>
+                    </div>
+                    <span class="chart-total">Total 350</span>
+                  </div>
+                  <div class="donut" style="--p1: 91.4; --c1: #1e88e5; --c2: #f2994a;">
+                    <div class="donut-center">
+                      <strong>320</strong>
+                      <span>Active</span>
+                    </div>
+                  </div>
+                  <div class="legend">
+                    <span><i style="--legend: #1e88e5"></i>Active <strong>320</strong></span>
+                    <span><i style="--legend: #f2994a"></i>Inactive <strong>30</strong></span>
+                  </div>
+                </article>
+
+                <article class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <p class="eyebrow">Diversity</p>
+                      <h4>Gender Distribution</h4>
+                    </div>
+                    <span class="chart-total">Total 350</span>
+                  </div>
+                  <div class="donut" style="--p1: 62.9; --c1: #6f4ef6; --c2: #ff7aa2;">
+                    <div class="donut-center">
+                      <strong>220</strong>
+                      <span>Male</span>
+                    </div>
+                  </div>
+                  <div class="legend">
+                    <span><i style="--legend: #6f4ef6"></i>Male <strong id="totalMale">220</strong></span>
+                    <span><i style="--legend: #ff7aa2"></i>Female <strong id="totalFemale">130</strong></span>
+                  </div>
+                </article>
+
+                <article class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <p class="eyebrow">Engagement</p>
+                      <h4>Contractual Split</h4>
+                    </div>
+                    <span class="chart-total">Total 350</span>
+                  </div>
+                  <div class="pie" style="--p1: 20; --c1: #16a085; --c2: #f2c94c;">
+                    <div class="pie-center">
+                      <strong id="totalNonContractualHolder">280</strong>
+                      <span>Non-Contractual</span>
+                    </div>
+                  </div>
+                  <div class="legend">
+                    <span><i style="--legend: #16a085"></i>Contractual <strong id="totalContractualHolder">70</strong></span>
+                    <span><i style="--legend: #f2c94c"></i>Non-Contractual <strong>280</strong></span>
+                  </div>
+                </article>
               </div>
-              <div class="overview-card">
-                <span id="newJoinersLabel">New Joiners</span>
-                <strong id="newJoinersValue">--</strong>
+
+              <div class="split-grid">
+                <article class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <p class="eyebrow">Workforce</p>
+                      <h4>Composition by Level</h4>
+                    </div>
+                    <span class="chart-total">Total 350</span>
+                  </div>
+                  <div class="bar-chart">
+                    <div class="bar" style="--value: 54.3%; --bar: #2d9cdb;">
+                      <span>Worker</span>
+                      <strong id="totalWorker">190</strong>
+                    </div>
+                    <div class="bar" style="--value: 34.3%; --bar: #9b51e0;">
+                      <span>Staff</span>
+                      <strong id="totalStaff">120</strong>
+                    </div>
+                    <div class="bar" style="--value: 11.4%; --bar: #27ae60;">
+                      <span>Officer</span>
+                      <strong id="totalOfficer">40</strong>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <p class="eyebrow">Compensation</p>
+                      <h4>Payment Methods</h4>
+                    </div>
+                    <span class="chart-total">Total 350</span>
+                  </div>
+                  <div class="hbar-chart">
+                    <div class="hbar-row">
+                      <span>Bank Pay</span>
+                      <div class="hbar"><span style="--value: 48.6%; --bar: #3f8cff;"></span></div>
+                      <strong id="bankPay">170</strong>
+                    </div>
+                    <div class="hbar-row">
+                      <span>Cash Pay</span>
+                      <div class="hbar"><span style="--value: 40%; --bar: #ff8f6b;"></span></div>
+                      <strong id="cashPay">140</strong>
+                    </div>
+                    <div class="hbar-row">
+                      <span>Mobile Pay</span>
+                      <div class="hbar"><span style="--value: 11.4%; --bar: #6fcf97;"></span></div>
+                      <strong id="mobilePay">40</strong>
+                    </div>
+                  </div>
+                </article>
               </div>
-              <div class="overview-card">
-                <span>Total Close</span>
-                <strong id="closeEmployees">--</strong>
+
+              <div class="split-grid">
+                <article class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <p class="eyebrow">This Month</p>
+                      <h4>HR Activities</h4>
+                    </div>
+                    <span class="chart-total">Feb 2026</span>
+                  </div>
+                  <div class="activity-list">
+                    <div class="activity-item">
+                      <span>New Joiners</span>
+                      <strong>15</strong>
+                      <span class="activity-dot is-positive"></span>
+                    </div>
+                    <div class="activity-item">
+                      <span>Releases</span>
+                      <strong id="releaseEmployees">4</strong>
+                      <span class="activity-dot"></span>
+                    </div>
+                    <div class="activity-item">
+                      <span>Resignations</span>
+                      <strong>3</strong>
+                      <span class="activity-dot is-warning"></span>
+                    </div>
+                    <div class="activity-item">
+                      <span id="incrementLabel">Increments</span>
+                      <strong id="incrementValue">10</strong>
+                      <span class="activity-dot is-positive"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <p class="eyebrow">Availability</p>
+                      <h4>Leave & Status</h4>
+                    </div>
+                    <span class="chart-total">Active 320</span>
+                  </div>
+                  <div class="status-grid">
+                    <div class="status-card">
+                      <span id="leaveLabel">On Leave</span>
+                      <strong id="leaveValue">4</strong>
+                      <div class="status-bar"><span style="--value: 1.1%; --bar: #f2994a;"></span></div>
+                    </div>
+                    <div class="status-card">
+                      <span>On Maternity</span>
+                      <strong id="maternityCount">5</strong>
+                      <div class="status-bar"><span style="--value: 1.4%; --bar: #eb5757;"></span></div>
+                    </div>
+                    <div class="status-card">
+                      <span>Quarter Holders</span>
+                      <strong id="quarterHolder">25</strong>
+                      <div class="status-bar"><span style="--value: 7.1%; --bar: #6fcf97;"></span></div>
+                    </div>
+                  </div>
+                  <div class="stacked-bar">
+                    <span style="--value: 1.1%; --bar: #f2994a;"></span>
+                    <span style="--value: 1.4%; --bar: #eb5757;"></span>
+                    <span style="--value: 7.1%; --bar: #6fcf97;"></span>
+                    <span style="--value: 90.4%; --bar: #e0e6f6;"></span>
+                  </div>
+                  <p class="stacked-note">Stacked availability vs total headcount</p>
+                </article>
               </div>
-              <div class="overview-card">
-                <span id="releaseLabel">Release</span>
-                <strong id="releaseEmployees">--</strong>
+
+              <div class="stats-row">
+                <div class="stat-chip">
+                  <span>Departments</span>
+                  <strong id="totalDepartment">12</strong>
+                </div>
+                <div class="stat-chip">
+                  <span>Sections</span>
+                  <strong id="totalSection">24</strong>
+                </div>
+                <div class="stat-chip">
+                  <span>Units</span>
+                  <strong id="totalUnit">6</strong>
+                </div>
+                <div class="stat-chip">
+                  <span>Floors</span>
+                  <strong id="totalFloor">4</strong>
+                </div>
               </div>
-              <div class="overview-card">
-                <span id="resignLabel">Resign</span>
-                <strong id="resignEmployees">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Worker</span>
-                <strong id="totalWorker">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Staff</span>
-                <strong id="totalStaff">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Officer</span>
-                <strong id="totalOfficer">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Male <strong class="symbol">&male;</strong></span>
-                <strong id="totalMale">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Female <strong class="symbol">&female;</strong></span>
-                <strong id="totalFemale">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Cash Pay Emp</span>
-                <strong id="cashPay">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Bank Pay Emp</span>
-                <strong id="bankPay">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Mobile Pay Emp</span>
-                <strong id="mobilePay">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Tax Holder</span>
-                <strong id="taxHolder">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Quarter Holder</span>
-                <strong id="quarterHolder">--</strong>
-              </div>
-              <div class="overview-card">
-                <span id="incrementLabel">Increment</span>
-                <strong id="incrementValue">--</strong>
-              </div>
-              <div class="overview-card is-hidden">
-                <span>Off Duty</span>
-                <strong id="offDuty">--</strong>
-              </div>
-              <div class="overview-card">
-                <span id="leaveLabel">Leave</span>
-                <strong id="leaveValue">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>On Maternity</span>
-                <strong id="maternityCount">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Department</span>
-                <strong id="totalDepartment">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Section</span>
-                <strong id="totalSection">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Unit</span>
-                <strong id="totalUnit">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Floor</span>
-                <strong id="totalFloor">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Designations</span>
-                <strong id="totalDesignations">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Contractual Holder</span>
-                <strong id="totalContractualHolder">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Non Contractual Holder</span>
-                <strong id="totalNonContractualHolder">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Total Shift</span>
-                <strong id="totalShift">--</strong>
-              </div>
-              <div class="overview-card">
-                <span>Blood Groups</span>
-                <div class="blood-group-row" id="bloodGroupSummary">--</div>
-              </div>
-              </div>
+
+              <article class="chart-card">
+                <div class="chart-header">
+                  <div>
+                    <p class="eyebrow">Health</p>
+                    <h4>Blood Group Distribution</h4>
+                  </div>
+                  <span class="chart-total">181 reported</span>
+                </div>
+                <div class="blood-grid">
+                  <div class="blood-row">
+                    <span>A+</span>
+                    <div class="blood-bar"><span style="--value: 49.7%; --bar: #2d9cdb;"></span></div>
+                    <strong>90</strong>
+                  </div>
+                  <div class="blood-row">
+                    <span>A-</span>
+                    <div class="blood-bar"><span style="--value: 8.3%; --bar: #56ccf2;"></span></div>
+                    <strong>15</strong>
+                  </div>
+                  <div class="blood-row">
+                    <span>B+</span>
+                    <div class="blood-bar"><span style="--value: 13.8%; --bar: #9b51e0;"></span></div>
+                    <strong>25</strong>
+                  </div>
+                  <div class="blood-row">
+                    <span>B-</span>
+                    <div class="blood-bar"><span style="--value: 2.8%; --bar: #bb6bd9;"></span></div>
+                    <strong>5</strong>
+                  </div>
+                  <div class="blood-row">
+                    <span>O+</span>
+                    <div class="blood-bar"><span style="--value: 16.6%; --bar: #27ae60;"></span></div>
+                    <strong>30</strong>
+                  </div>
+                  <div class="blood-row">
+                    <span>O-</span>
+                    <div class="blood-bar"><span style="--value: 4.4%; --bar: #6fcf97;"></span></div>
+                    <strong>8</strong>
+                  </div>
+                  <div class="blood-row">
+                    <span>AB+</span>
+                    <div class="blood-bar"><span style="--value: 3.3%; --bar: #f2c94c;"></span></div>
+                    <strong>6</strong>
+                  </div>
+                  <div class="blood-row">
+                    <span>AB-</span>
+                    <div class="blood-bar"><span style="--value: 1.1%; --bar: #f2994a;"></span></div>
+                    <strong>2</strong>
+                  </div>
+                </div>
+              </article>
             </section>
           </div>
           <div class="view" data-view="employees">
